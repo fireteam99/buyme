@@ -1,15 +1,15 @@
 <%@ page import ="java.sql.*" %>
 <%
-    String userid = request.getParameter("username");   
+    String username = request.getParameter("username");   
     String pwd = request.getParameter("password");
     Class.forName("com.mysql.jdbc.Driver");
     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbname","root", "dbpass");
     Statement st = con.createStatement();
     ResultSet rs;
-    rs = st.executeQuery("select * from users where username='" + userid + "' and password='" + pwd + "'");
+    rs = st.executeQuery("select * from users where username='" + username + "' and password='" + pwd + "'");
     if (rs.next()) {
-        session.setAttribute("user", userid); // the username will be stored in the session
-        out.println("welcome " + userid);
+        session.setAttribute("user", username); // the username will be stored in the session
+        out.println("welcome " + username);
         out.println("<a href='logout.jsp'>Log out</a>");
         response.sendRedirect("success.jsp");
     } else {
