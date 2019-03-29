@@ -1,6 +1,5 @@
-// general font stuff
 body {
-	font-family: 'Dosis', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 }
 
 .lrg-hdr {
@@ -24,13 +23,13 @@ body {
 
 .body-lrg {
 	font-size: 16pt;
-	font-family: 'Dosis', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	color: WhiteSmoke;
 }
 
 .body-sml {
 	font-size: 13pt;
-	font-family: 'Dosis', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	color: WhiteSmoke;
 }
 
