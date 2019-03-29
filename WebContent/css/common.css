@@ -1,0 +1,41 @@
+// general font stuff
+body {
+	font-family: 'Dosis', sans-serif;
+}
+
+.lrg-hdr {
+	font-size: 50pt;
+	font-family: 'Dosis', sans-serif;
+	color: WhiteSmoke;
+	font-weight: 200;
+}
+
+.med-hdr {
+	font-size: 20pt;
+	font-family: 'Dosis', sans-serif;
+	color: WhiteSmoke;
+}
+
+.sml-hdr {
+	font-size: 18pt;
+	font-family: 'Dosis', sans-serif;
+	color: WhiteSmoke;
+}
+
+.body-lrg {
+	font-size: 16pt;
+	font-family: 'Dosis', sans-serif;
+	color: WhiteSmoke;
+}
+
+.body-sml {
+	font-size: 13pt;
+	font-family: 'Dosis', sans-serif;
+	color: WhiteSmoke;
+}
+
+.card {
+	background-color: gainsboro;
+	padding: 2em;
+	margin: 1em;
+}
