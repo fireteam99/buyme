@@ -1,6 +1,6 @@
 <nav class="navbar navbar-splash">
-	<a href="/html/">Buy Me</a>
-	<a href="/html/">Shop</a>
-	<a href="/html/">Login</a>
-	<a href="/html/">Register</a>
+		<a href="#">Buy Me</a>
+		<a href="market.jsp">Shop</a>
+		<a href="login.jsp">Login</a>
+		<a href="register.jsp">Register</a>
 </nav>

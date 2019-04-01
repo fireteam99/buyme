@@ -2,8 +2,10 @@ body {
 	font-family: 'Open Sans', sans-serif;
 }
 .navbar {
+	border-radius: 0 0 1em 1em;
 	position: sticky; top: 0;
-	background-color: rgba(237, 237, 237, 0.55);
+	background-color: WhiteSmoke;
+	padding: 1em;
 }
 .navbar-splash {
 	display: none;
