@@ -20,12 +20,12 @@ body {
 }
 .title {
 	font-size: 80pt;
-	padding-top: 1em;
-	margin-top: .5em;
+	padding-top: .7em;
+	margin-top: .2em;
 	text-align: center;
 }
 .subtitle {
-	padding-top: 1em;
+	padding-top: .3em;
 	margin-top: .5em;
 	text-align: center;	
 }
@@ -35,8 +35,8 @@ body {
 .reg-login {
 	display: flex;
 	justify-content: center;
-	padding: 1em;
-	margin-bottom: 1em;
+	padding-top: 4em;
+	margin-bottom: 5em;
 }
 .featured-search-container {
 	display: flex;

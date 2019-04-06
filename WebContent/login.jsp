@@ -1,13 +1,42 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-   <head>
-      <title>Login Form</title>
-   </head>
+<head>
+<meta charset="UTF-8">
+<title>Login Form</title>
+
+<link rel="stylesheet" href="css/common.css" type="text/css">
+<link rel="stylesheet" href="css/login.css" type="text/css">
+<link rel="stylesheet" href="css/navbar.css" type="text/css">
+<link rel="stylesheet" href="css/footer.css" type="text/css">
+
+</head>
    <body>
-     <form action="checkLoginDetails.jsp" method="POST">
-       Username: <input type="text" name="username"/> <br/>
-       Password:<input type="password" name="password"/> <br/>
-       <input type="submit" value="Submit"/>
-     </form>
+   	<div class="page-warp">
+	   	<header>
+	        <%@ include file="./partials/navbar.jsp" %>
+	    </header>
+	    <div class="login-card-container">
+		    <div class="login-card card">
+				<p class="login-title hdr-med">Login</p>	
+				<form action="checkLoginDetails.jsp" method="POST">
+					<div class="input-container">
+						<input class="input-form" id="login" type="text" name="username" required/> <br/>
+						<label class="input-label" for="login">Username/Email</label>
+					</div>
+					<div class="input-container">
+						<input class="input-form" id="password" type="password" name="password" required/> <br/>
+						<label class="input-label" for="password">Password</label>
+					</div>
+					<div class="login-button-container">
+						<button class="btn-secondary" type="submit">Sign-on</button>
+					</div>
+				 </form>
+				 <a class="link" href="register.jsp">Don't have an account?</a>
+		    </div>
+	    </div>    
+   	</div>
+ 	<%@ include file="./partials/footer.jsp" %>
    </body>
 </html>

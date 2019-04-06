@@ -1,0 +1,25 @@
+.page-warp {
+	min-height: 100%;
+	margin-bottom: -7.3em;
+}
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+.footer {
+	height: 3em;
+}
+.page-warp:after {
+	height: 3em;
+}
+.footer {
+	padding-top: .3em;
+   	width: 100%;
+ 	background-color: #312742;
+	text-align: center;
+	color: Gainsboro;	
+}
+.footer-text {
+		padding-bottom: .7em;
+		padding-top: .7em;
+}

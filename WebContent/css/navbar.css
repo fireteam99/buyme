@@ -1,0 +1,8 @@
+.navbar {
+	border-radius: 0em 0em 1em 1em;
+	position: sticky; top: 0;
+	background-color: WhiteSmoke;
+	padding: 1em;
+	box-shadow: 0em .5em 2em rgba(107, 107, 107, 0.59);
+}
+	

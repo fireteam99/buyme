@@ -1,0 +1,33 @@
+html {
+	height: 100%;
+	margin: 0;
+    padding: 0;
+	background: rgb(49,39,66);
+	background: linear-gradient(16deg, rgba(49,39,66,1) 0%, rgba(96,102,172,1) 28%, rgba(199,255,247,1) 100%);
+	min-height: 100%;
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+	
+}
+body {
+	height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.login-card-container {
+	margin: 4em;
+	text-align: center;
+}
+.login-card {
+	display: inline-block;
+	border-radius: 1em;
+	width: 20em;
+	height: 25em;
+}
+.login-title {
+	margin: 1em;
+	color: rgba(96,102,172,1);
+}
+.login-button-container {
+	margin-top: 1.3em;
+}
