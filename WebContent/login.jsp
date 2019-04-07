@@ -13,7 +13,7 @@
 
 </head>
    <body>
-   	<div class="page-warp">
+   	<div class="page-wrap">
 	   	<header>
 	        <%@ include file="./partials/navbar.jsp" %>
 	    </header>
@@ -30,7 +30,7 @@
 						<label class="input-label" for="password">Password</label>
 					</div>
 					<div class="login-button-container">
-						<button class="btn-secondary" type="submit">Sign-on</button>
+						<button class="btn-secondary" type="submit">Lets Go</button>
 					</div>
 				 </form>
 				 <a class="link" href="register.jsp">Don't have an account?</a>
