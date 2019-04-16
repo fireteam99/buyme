@@ -1,15 +1,53 @@
-<!Doctype html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Register Form</title>
-  </head>
+<head>
+<meta charset="UTF-8">
+<title>Register Form</title>
+
+<link rel="stylesheet" href="css/common.css" type="text/css">
+<link rel="stylesheet" href="css/register.css" type="text/css">
+<link rel="stylesheet" href="css/navbar.css" type="text/css">
+<link rel="stylesheet" href="css/footer.css" type="text/css">
+
+</head>
   <body>
-    <form action="checkRegisterDetails.jsp" method="POST">
-      Full Name: <input type="text" name="name"/> <br/>
-      Username: <input type="text" name="username"/> <br/>
-      Email: <input type="text" name="email"/> <br/>
-      Password: <input type="password" name="password"/> <br/>
-      <input type="submit" value="Submit">
-      </form>
+  	<div class="content">
+  		<header>
+        	<%@ include file="./partials/navbar.jsp" %>
+	  	</header>
+	  	<div class="register-card-container">
+	  		<div class="card register-card">
+				<p class="register-title hdr-med">Register</p>	
+	  			<form action="checkRegisterDetails.jsp" method="POST">
+		  			<div>
+		  				<input class="input-form" id="name" type="text" name="name" required/>
+		  				<label class="input-label" for="name">Full Name</label>
+		  			</div>
+		  			<br/>
+		  			<div>
+		  				<input class="input-form" id="username" type="text" name="username" required/>
+		  				<label class="input-label" for="username">Username</label>
+		  			</div>
+		  			<br/>
+		  			<div>
+		  				<input class="input-form" id="email" type=email name="email" required/>
+		  				<label class="input-label" for="email">Email</label>
+		  			</div>
+		  			<br/>
+		  			<div>
+		  				<input class="input-form" id="password" type=password name="password" required/>
+		  				<label class="input-label" for="password">Password</label>
+		  			</div>
+		  			<br/>
+					<button class="btn-secondary" type="submit">Lets Go</button>
+	      		</form>
+				<a class="link" href="login.jsp">Already have an account?</a>
+	  		</div>
+	  	</div>
+	    
+  	</div>
+ 	<%@ include file="./partials/footer.jsp" %>
   </body>
 </html>

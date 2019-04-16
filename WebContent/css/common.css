@@ -1,21 +1,13 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+html, body {
+	height: 100%;
+}
 body {
 	font-family: 'Open Sans', sans-serif;
 }
-.navbar {
-	border-radius: 0 0 1em 1em;
-	position: sticky; top: 0;
-	background-color: WhiteSmoke;
-	padding: 1em;
-}
-.navbar-splash {
-	display: none;
-}
-.footer {
-	background-color: #312742;
-	text-align: center;
-	color: Gainsboro;
-}
-
 .hdr-lrg {
 	font-size: 70pt;
 	font-family: 'Dosis', sans-serif;
@@ -74,6 +66,7 @@ body {
 }
 
 .btn-secondary {
+	border: none;
 	font-weight: 400;
 	font-size: 11pt;
 	padding: .8em 2.5em;
@@ -81,11 +74,11 @@ body {
 	background-image: linear-gradient(16deg, rgba(49,39,66,1) 0%, rgba(96,102,172,1) 28%, rgba(199,255,247,1) 100%);
 	background-size: auto 200%;
 	background-position: 0;
-	color: white;
+	color: WhiteSmoke;
 	text-decoration: none;
 	border-radius: .5em;
 	box-shadow: 0em .5em 1.5em #6d6d6d;
-	transition: background-position 0.4s ease, box-shadow 0.2s linear;
+	transition: background-position 0.4s ease, box-shadow 0.2s linear, color 0.4s ease;
 }
 .btn-secondary:hover {
 	background-position: 0 0;
@@ -93,6 +86,7 @@ body {
 }
 
 .btn-secondary:active {
+	color: white;
 	background-position: 0 0;
 	box-shadow: none;
 }
@@ -152,6 +146,24 @@ body {
 	margin-top: .6em;
 	text-align: center;
 }
+
+/* item card wrapper */
+.featured {
+	border: none;
+	border-radius: 0;
+	margin-top: 2em;
+}
+.category-heading {
+	color: #6066ac;
+	font-weight: 600;
+	font-size: 22pt;
+}
+.flex-container {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+
 .btn-details {
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
@@ -159,12 +171,50 @@ body {
 	width: 3em;
 	font-size: 10pt;
 }
-.search-bar {
-	height: 4em;
-	width: 50%;
-	border: none;
-	border-radius: .5em;
-	background-color: WhiteSmoke;
-		box-shadow: 0em .5em 1.5em #474747;
-	
+
+.input-form {
+  width: 20em;
+  height: 3em;
+  border: none;
+  border-radius: .5em;
+  background-color: rgba(245, 245, 245, .8);
+  box-shadow: 1px 2px 5px #888888;
+  transition: all .3s ease;
+  margin: .5em;
+}
+
+.input-form:hover {
+  filter: contrast(80%);
+}
+.input-form:focus-within {
+  box-shadow: none;
+  background-color: rgba(1,1,1, 0.1);
+}
+
+.input-form:valid {
+  border-left: .5em solid rgb(158, 219, 166);
+}
+
+.input-label {
+  text-align: left;
+  padding-left: 3.2em;
+  margin-top: -.2em;
+  display: block;
+  font-size: 12pt;
+}
+
+.link {
+ color: #312742;
+ text-decoration-style: underline;
+ transition: background-color .5s ease;
+}
+
+.link:hover {
+  background-color: rgb(99, 76, 84, 0.35);
+  color: rgb(247, 247, 247);
+}
+
+.link:active {
+  background-color: rgb(99, 76, 84, 0.95);
+  color: whitesmoke;
 }

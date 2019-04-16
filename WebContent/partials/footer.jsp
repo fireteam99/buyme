@@ -1,3 +1,3 @@
 <footer class="footer">
-	Made by: Ray Sy, Evan Wang, Jon King, Daniel R
+	<p class="footer-text">Made by: Ray Sy, Evan Wang, Jon King, Daniel R</p>
 </footer>
