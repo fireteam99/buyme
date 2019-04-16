@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +8,7 @@
 	<h1>Administrator Page</h1>
 	<h2>Manage customer representative accounts.</h2>
 	<a href="createCustRep.jsp">Create customer representative account.</a>
-	<a href="delCustRep.jsp">Delete customer representative account.</a>
+	<a href="custRepManager.jsp">Delete customer representative account.</a>
 	<br>
 	<h2>Generate Sales Reports</h2>
 	<form action="salesReport.jsp" method="POST">
