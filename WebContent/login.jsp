@@ -13,7 +13,7 @@
 
 </head>
    <body>
-   	<div class="page-wrap">
+   	<div class="content">
 	   	<header>
 	        <%@ include file="./partials/navbar.jsp" %>
 	    </header>
