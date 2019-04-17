@@ -35,7 +35,7 @@
 				<p class="featured-heading hdr-med featured-search">Today's Featured Items <i class="fas fa-fire"></i></p>
 			</div>
 			
-			<div class="card featured">
+			<div class="card item-container">
 				<p class="category-heading hdr-sml">Phones</p>
 				<div class="flex-container">
 					<div class="item-card featured-item">
@@ -72,7 +72,7 @@
 				</div>
 			</div>
 			
-			<div class="card featured">
+			<div class="card item-container">
 				<p class="category-heading hdr-sml">Cars</p>
 				<div class="flex-container">
 					<div class="item-card featured-item">
@@ -103,7 +103,7 @@
 				</div>
 			</div>
 			
-			<div class="card featured">
+			<div class="card item-container">
 				<p class="category-heading hdr-sml">Computers</p>
 				<div class="flex-container">
 					<div class="item-card featured-item">
