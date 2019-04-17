@@ -11,8 +11,8 @@
     java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
     String insertStatement = String.format("INSERT INTO Rep (created_at, full_name, password, username, email, user_id) VALUES ('%s', '%s', '%s', '%s', '%s', null);", date.toString(), name, password, username, email);
     ResultSet rs1,rs2;
-    rs1=st.executeQuery("select from User where 'username' ="+username);
-    rs2=st.executeQuery("select from Admin where 'username' ="+username);
+    rs1=st.executeQuery("select * from User where 'username' ="+username);
+    rs2=st.executeQuery("select * from Admin where 'username' ="+username);
     if(!rs1.next()&&!rs2.next()){
         st.executeUpdate(insertStatement);
         response.sendRedirect("success2.jsp");
