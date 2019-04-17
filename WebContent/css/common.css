@@ -184,11 +184,12 @@ body {
 }
 
 .input-form:hover {
-  filter: contrast(80%);
+  filter: contrast(90%);
 }
 .input-form:focus-within {
   box-shadow: none;
   background-color: rgba(1,1,1, 0.1);
+  color: whitesmoke;
 }
 
 .input-form:valid {
@@ -216,11 +217,12 @@ body {
 	padding-right: 0;
 }
 .search-form:hover {
-  filter: contrast(80%);
+  filter: contrast(90%);
 }
 .search-form:focus-within {
   box-shadow: none;
   background-color: rgba(1,1,1, 0.1);
+  color: whitesmoke;
 }
 
 .search-btn {
