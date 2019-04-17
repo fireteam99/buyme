@@ -7,15 +7,24 @@
   Class.forName("com.mysql.jdbc.Driver");
   try {
 	Connection con = DriverManager.getConnection("jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme", "cs336", "thisisareallysecurepassword551");
-    Statement st = con.createStatement();
-    java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
-    String insertStatement = String.format("INSERT INTO User (created_at, full_name, password, username, email, user_id) VALUES ('%s', '%s', '%s', '%s', '%s', null);", date.toString(), name, password, username, email);
-    st.executeUpdate(insertStatement);
-    session.setAttribute("user", username);
-    response.sendRedirect("success.jsp");
+    	Statement st = con.createStatement();
+    	java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
+    	String insertStatement = String.format("INSERT INTO User (created_at, full_name, password, username, email, user_id) VALUES ('%s', '%s', '%s', '%s', '%s', null);", date.toString(), name, password, username, email);
+    	ResultSet rs1,rs2;
+    	rs1=st.executeQuery("select * from User where 'username' ="+username);
+    	rs2=st.executeQuery("select * from Admin where 'username' ="+username);
+    	if(!rs1.next()&&!rs2.next()){
+    		st.executeUpdate(insertStatement);
+        	session.setAttribute("user", username);
+        	response.sendRedirect("success.jsp");
+    	}
+    	else{
+    		out.println("Error: <a href='register.jsp'>Try again</a>");
+    	}
   } catch(SQLException se) {
-      se.printStackTrace();
+  	out.println("Error: <a href='register.jsp'>Try again</a>");
+      	se.printStackTrace();
   } catch(Exception e) {
-      e.printStackTrace();
+      	e.printStackTrace();
   }
 %>
