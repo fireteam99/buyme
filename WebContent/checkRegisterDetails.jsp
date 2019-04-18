@@ -10,17 +10,9 @@
     	Statement st = con.createStatement();
     	java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
     	String insertStatement = String.format("INSERT INTO User (created_at, full_name, password, username, email, user_id) VALUES ('%s', '%s', '%s', '%s', '%s', null);", date.toString(), name, password, username, email);
-    	ResultSet rs1,rs2;
-    	rs1=st.executeQuery("select * from User where 'username' ="+username);
-    	rs2=st.executeQuery("select * from Admin where 'username' ="+username);
-    	if(!rs1.next()&&!rs2.next()){
-    		st.executeUpdate(insertStatement);
-        	session.setAttribute("user", username);
-        	response.sendRedirect("success.jsp");
-    	}
-    	else{
-    		out.println("Error: <a href='register.jsp'>Try again</a>");
-    	}
+    	st.executeUpdate(insertStatement);
+    	session.setAttribute("user", username);
+    	response.sendRedirect("success.jsp");
   } catch(SQLException se) {
   	out.println("Error: <a href='register.jsp'>Try again</a>");
       	se.printStackTrace();
