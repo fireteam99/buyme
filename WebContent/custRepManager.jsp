@@ -7,9 +7,7 @@
 </head>
 <body>
 	<h3>Manage Customer Representative Accounts</h3>
-	<form action="custAcctHandler.jsp">
-      <input type="text" name="search" placeholder="Username">
-      <button type="submit">Search</button>
+	
     </form>
     <table>
     	<tr>
@@ -23,15 +21,20 @@ try{
 	Connection con = DriverManager.getConnection("jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme", "cs336", "thisisareallysecurepassword551");
     Statement st = con.createStatement();
     ResultSet rs;
-    rs = st.executeQuery("select * from Rep");
+    rs = st.executeQuery("SELECT * FROM User WHERE user_id IN (SELECT user_id FROM Representative)");
     while(rs.next()) {
 %>
-		<tr>
-			<td><%=rs.getString("username")%></td>
-			<td><%=rs.getString("full_name")%></td>
-			<td><%=rs.getString("email")%></td>
-			<td><button id=<%=rs.getString("username")%> onClick=<%st.executeQuery("delete from Rep where username ='"+rs.getString("username")+"'");%>>Delete</button></td>
-		</tr>     
+	<tr>
+		<td><%=rs.getString("username")%></td>
+		<td><%=rs.getString("full_name")%></td>
+		<td><%=rs.getString("email")%></td>
+		<td>
+			<form method="POST">
+      			<input type="submit" value="Delete" onclick="if(confirm('Are you sure? This action cannot be undone.')){form.action='deleteRep.jsp'}">
+     			<input type="hidden" name="usn" value=<%=rs.getString("username")%>>
+     			</form>
+     		</td>		
+     	</tr>   
 <%    
 	}
 }
