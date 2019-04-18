@@ -5,11 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Login Form</title>
-
-<link rel="stylesheet" href="css/common.css" type="text/css">
+<%@ include file="./partials/commonCss.jsp" %>
 <link rel="stylesheet" href="css/login.css" type="text/css">
-<link rel="stylesheet" href="css/navbar.css" type="text/css">
-<link rel="stylesheet" href="css/footer.css" type="text/css">
 
 </head>
    <body>
