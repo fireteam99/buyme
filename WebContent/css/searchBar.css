@@ -1,0 +1,20 @@
+.categories-wrapper {
+	display: grid;
+	grid-gap: .5em;
+	margin-left: 1em;
+	margin-right: 1em;
+	justify-items: center;
+	grid-template-columns: 1fr 1fr;
+  	grid-template-rows: auto;
+  	
+}
+.category-card {
+	width: 60%;
+	text-align: center;
+}
+.category-hdr {
+	color: #6066ac;
+}
+.categories-modal {
+	background-color: #e1f1f2;
+}
