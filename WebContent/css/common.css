@@ -186,6 +186,10 @@ body {
 	font-size: 10pt;
 }
 
+
+.input-container {
+	margin: .5em;
+}
 .input-form {
   padding-left: 1em;
   width: 20em;

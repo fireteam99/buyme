@@ -7,6 +7,7 @@
 				<button class="search-btn" type="submit">Go</button> 
 			</span>
 			<select class="btn-primary" name="category-list" form="search">
+				<option value="all categories" selected="selected">All Categories</option>
 				<option value="vehicles">Vehicles</option>
 				<option value="electronics">Electronics</option>
 			</select>

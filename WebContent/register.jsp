@@ -25,23 +25,21 @@
 		  				<input class="input-form" id="name" type="text" name="name" required/>
 		  				<label class="input-label" for="name">Full Name</label>
 		  			</div>
-		  			<br/>
 		  			<div>
 		  				<input class="input-form" id="username" type="text" name="username" required/>
 		  				<label class="input-label" for="username">Username</label>
 		  			</div>
-		  			<br/>
 		  			<div>
 		  				<input class="input-form" id="email" type=email name="email" required/>
 		  				<label class="input-label" for="email">Email</label>
 		  			</div>
-		  			<br/>
 		  			<div>
 		  				<input class="input-form" id="password" type=password name="password" required/>
 		  				<label class="input-label" for="password">Password</label>
 		  			</div>
-		  			<br/>
-					<button class="btn-secondary" type="submit">Lets Go</button>
+		  			<div class="register-button-container">
+						<button class="btn-secondary" type="submit">Lets Go</button>
+					</div>
 	      		</form>
 				<a class="link" href="login.jsp">Already have an account?</a>
 	  		</div>
