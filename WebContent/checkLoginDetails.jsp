@@ -8,23 +8,22 @@
     	ResultSet rs;
     	rs = st.executeQuery("select * from User where username='" + username + "' and password='" + pwd + "'");
     	if (rs.next()) {
-        	session.setAttribute("user", username);
-        	response.sendRedirect("success.jsp");
-    	} else {
-       	 	rs = st.executeQuery("select * from Rep where username='" + username + "' and password='" + pwd + "'");
+       		session.setAttribute("user", username);
+        	int id=rs.getInt("user_id");
+        	rs = st.executeQuery("select * from Representative where user_id='"+id+"'");
         	if (rs.next()) {
-            		session.setAttribute("user", username);
-            		response.sendRedirect("custRepDashboard.jsp");
+            	response.sendRedirect("custRepDashboard.jsp");
         	}
         	else{
-            		rs = st.executeQuery("select * from Admin where username='" + username + "' and password='" + pwd + "'");
+        		rs = st.executeQuery("select * from Admin where user_id='"+id+"'");
             		if (rs.next()) {
-                		session.setAttribute("user", username);
                 		response.sendRedirect("adminDashboard.jsp");
             		}
             		else{
-               			 out.println("Invalid password <a href='login.jsp'>try again</a>");
+				response.sendRedirect("success.jsp");
             		}
         	}
+    	} else {
+        	out.println("Invalid password <a href='login.jsp'>try again</a>");
     	}
 %>
