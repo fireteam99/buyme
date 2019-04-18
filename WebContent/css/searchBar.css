@@ -18,3 +18,10 @@
 .categories-modal {
 	background-color: rgba(225, 241, 242, .85);
 }
+.top-bar {
+	margin: 1em;
+	padding: 1em;
+	display: flex;
+	align-items: center;
+  	justify-content: center;
+}

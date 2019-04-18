@@ -12,6 +12,7 @@
 <body>
 	<%@ include file="./partials/navbar.jsp" %>
 	<div class="content">
+		<%@ include file="./partials/searchBar.jsp"%>
 		<header>
 		<div class ="heading">
 				<p class="hdr-lrg title">Welcome To Buy Me</p>

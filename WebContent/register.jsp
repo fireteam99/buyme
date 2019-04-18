@@ -6,10 +6,8 @@
 <meta charset="UTF-8">
 <title>Register Form</title>
 
-<link rel="stylesheet" href="css/common.css" type="text/css">
+<%@ include file="./partials/commonCss.jsp" %>
 <link rel="stylesheet" href="css/register.css" type="text/css">
-<link rel="stylesheet" href="css/navbar.css" type="text/css">
-<link rel="stylesheet" href="css/footer.css" type="text/css">
 
 </head>
   <body>
