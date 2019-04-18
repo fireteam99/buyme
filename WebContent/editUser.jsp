@@ -13,15 +13,17 @@
 	String name=request.getParameter("name");
 %>
 	<form method="POST" action="userUpdate.jsp">
-      Full Name: <input type="text" name="name" value=<%=name%>> <br/>
-      Username: <input type="text" name="username" value=<%=usn%>> <br/>
-      Email: <input type="text" name="email" value=<%=email%>> <br/>
-      <input type="hidden" name="oldName" value=<%=name%>>
-      <input type="hidden" name="oldUser" value=<%=usn%>>
-      <input type="hidden" name="oldEmail" value=<%=email%>>
-      <input type="submit" value="Save Changes">
+    	Full Name: <input type="text" name="name" value=<%=name%>> <br/>
+      	Email: <input type="text" name="email" value=<%=email%>> <br/>
+      	<input type="hidden" name="oldName" value=<%=name%>>
+      	<input type="hidden" name="oldEmail" value=<%=email%>>
+      	<input type="submit" value="Save Changes">
 	</form>
 	
+	<form method="POST" action="resetPassword.jsp">
+		<input type="submit" value="Reset Password">
+		<input type="hidden" name="usn" value=<%=usn%>>
+	</form>
 
 </body>
 </html>
