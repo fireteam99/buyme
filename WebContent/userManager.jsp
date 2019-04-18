@@ -24,9 +24,9 @@
     	ResultSet rs;
     	String name = request.getParameter("search");
     	if (name != null && name.length() > 0) {
-    	    rs = st.executeQuery("SELECT * FROM User WHERE username LIKE'%"+name+"%'");
+    	    rs = st.executeQuery("SELECT * FROM User WHERE username LIKE'%"+name+"%' AND user_id NOT IN (SELECT user_id FROM Admin) AND user_id NOT IN(SELECT user_id FROM Representative)");
     	} else {
-    	    rs = st.executeQuery("SELECT * FROM User");
+    	    rs = st.executeQuery("SELECT * FROM User WHERE user_id NOT IN (SELECT user_id FROM Admin) AND user_id NOT IN(SELECT user_id FROM Representative)");
     	}
     	while(rs.next()) {
 %>
@@ -35,19 +35,19 @@
 			<td><%=rs.getString("full_name")%></td>
 			<td><%=rs.getString("email")%></td>
 			<td>
-				<form action="editUser.jsp" method="POST">
+			<form action="editUser.jsp" method="POST">
       			<input type="submit" value="Edit">
       			<input type="hidden" value=<%=rs.getString("username")%> name="usn">
       			<input type="hidden" value=<%=rs.getString("full_name")%> name="name">
        			<input type="hidden" value=<%=rs.getString("email")%> name="email">
      			</form>
-     		</td>
-     		<td>
+     			</td>
+     			<td>
      			<form method="POST">
       			<input type="submit" value="Delete" onclick="if(confirm('Are you sure? This action cannot be undone.')){form.action='deleteUser.jsp'}">
      			<input type="hidden" name="usn" value=<%=rs.getString("username")%>> 
      			</form>
-     		</td>
+     			</td>
 			
 		</tr>     
 <%    
