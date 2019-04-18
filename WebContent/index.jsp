@@ -5,16 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Buy Me</title>
-<link rel="stylesheet" href="css/common.css" type="text/css">
+<%@ include file="./partials/commonCss.jsp" %>
 <link rel="stylesheet" href="css/index.css" type="text/css">
-<link rel="stylesheet" href="css/navbar.css" type="text/css">
-<link rel="stylesheet" href="css/footer.css" type="text/css">
 
-
-<link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,700|Open+Sans:300,400,600" rel="stylesheet">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 </head>
 <body>
 	<%@ include file="./partials/navbar.jsp" %>
@@ -136,5 +129,6 @@
 		</section>
 	</div>
 	<%@ include file="./partials/footer.jsp" %>
+	<%@ include file="./partials/commonScripts.jsp" %>
 </body>
 </html>

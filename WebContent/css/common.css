@@ -146,7 +146,16 @@ body {
 	margin-top: .6em;
 	text-align: center;
 }
-
+.featured-heading {
+	display: inline-block;
+	font-weight: 800;
+}
+.featured-search-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1em;
+}
 /* item card wrapper */
 .item-container {
 	border: none;
@@ -163,6 +172,11 @@ body {
 	flex-wrap: wrap;
 }
 
+.section-header {
+	text-align: center;
+	margin: 1em;
+	padding: 1em;
+}
 
 .btn-details {
 	padding-top: 0.5em;
@@ -173,6 +187,7 @@ body {
 }
 
 .input-form {
+  padding-left: 1em;
   width: 20em;
   height: 3em;
   border: none;
@@ -215,6 +230,7 @@ body {
 	margin: .5em;
 	margin-right: 0;
 	padding-right: 0;
+	padding-left: 1em;
 }
 .search-form:hover {
   filter: contrast(90%);
