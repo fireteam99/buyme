@@ -13,7 +13,7 @@ try{
 	Statement st = con.createStatement();
 	ResultSet rs;
 	String usn=request.getParameter("usn");
-	rs=st.executeQuery("delete from User where 'username'="+usn);
+	rs=st.executeQuery("DELETE FROM User WHERE username='"+usn+"'");
 }
 catch (SQLException se){
 	se.printStackTrace();
@@ -24,5 +24,6 @@ catch (Exception e){
 %>
 <body>
 	<p>User deleted.</p>
+	<a href="custRepDashboard.jsp">Homepage</a>
 </body>
 </html>
