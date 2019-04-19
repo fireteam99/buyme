@@ -1,7 +1,7 @@
 <%@ page import ="java.sql.*" %>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%
-  	String user = session.getAttribute("user");//request.getParameter("user"); 
+  	String user = (String)session.getAttribute("user");//request.getParameter("user"); 
 	//String threadid = request.getParameter(threadid);//SQL does this automatically??...
     	//String title = request.getParameter("title");
 	//String desc = request.getParameter("description");
