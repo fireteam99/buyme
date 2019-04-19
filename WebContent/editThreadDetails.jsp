@@ -3,10 +3,10 @@
 <%
   	String user = session.getAttribute("user");//request.getParameter("user"); 
 	//String threadid = request.getParameter(threadid);//SQL does this automatically??...
-    //String title = request.getParameter("title");
+    	//String title = request.getParameter("title");
 	//String desc = request.getParameter("description");
-    Class.forName("com.mysql.jdbc.Driver");
-    String url = "jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme";
+    	Class.forName("com.mysql.jdbc.Driver");
+    	String url = "jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme";
 	Connection con = DriverManager.getConnection(url, "cs336", "thisisareallysecurepassword551");
     
 
@@ -28,14 +28,14 @@
     	
     	String user_id = "";
     	//get the user_id from the username to show who posted the thread
-		String get_user_id = "SELECT u.user_id FROM User u WHERE u.username = " + user + " ";
-	    Statement st = con.createStatement();
+	String get_user_id = "SELECT u.user_id FROM User u WHERE u.username = " + user + " ";
+	Statement st = con.createStatement();
 		ResultSet result_username = st.executeQuery(get_user_id);
 		if(result_username.next()){
 			user_id = result_username.getString("u.user_id");
 		}
-
-		String topost = "INSERT INTO `Thread` (threadid, user_id, timecreated, title, description, solved) VALUES (null, '%s', '%s', '%s', '%s', 0);", user_id, date.toString(), title, body);//insert 0 (its BIT type, only 0,1,or null)
+		java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
+		String topost = String.format("INSERT INTO `Thread` (threadid, user_id, timecreated, title, description, solved) VALUES (null, '%s', '%s', '%s', '%s', 0);", user_id, date.toString(), title, body);//insert 0 (its BIT type, only 0,1,or null)
 		out.println(topost);
 		st.executeUpdate(topost);
 
