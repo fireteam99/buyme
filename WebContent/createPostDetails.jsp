@@ -3,10 +3,10 @@
 <%
   	String user = session.getAttribute("user");//request.getParameter("user"); 
 	//String threadid = request.getParameter(threadid);//SQL does this automatically??...
-    //String title = request.getParameter("title");
+    	//String title = request.getParameter("title");
 	//String desc = request.getParameter("description");
-    Class.forName("com.mysql.jdbc.Driver");
-    String url = "jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme";
+    	Class.forName("com.mysql.jdbc.Driver");
+    	String url = "jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme";
 	Connection con = DriverManager.getConnection(url, "cs336", "thisisareallysecurepassword551");
     //Statement st = con.createStatement();
 
@@ -54,16 +54,17 @@
 
 		
 		
-		if((!tuserid.equals(userid)) && isAdmin == false && isCustomerRep == false){
+		if((!tuserid.equals(user_id)) && isAdmin == false && isCustomerRep == false){
 			out.print("You may not post in a thread that you haven't created if your not a customer rep or admin");
 		}
-		if(tuserid.equals(userid) || isAdmin==true || isCustomerRep==true){
+		if(tuserid.equals(user_id) || isAdmin==true || isCustomerRep==true){
 			//continue :)
 			
 			String body = request.getParameter("body");
-    
+    			String title = request.getParameter("title");
 
-			String topost = "INSERT INTO `Post` (threadid, post_id, user_id, body, timecreated) VALUES ('%s', null, '%s', '%s', '%s', '%s');", user_id, date.toString(), title, body);
+			java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
+			String topost = String.format("INSERT INTO `Post` (threadid, post_id, user_id, body, timecreated) VALUES ('%s', null, '%s', '%s', '%s', '%s');", user_id, date.toString(), title, body);
 			out.println(topost);
 			st.executeUpdate(topost);
 
