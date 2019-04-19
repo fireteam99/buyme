@@ -11,9 +11,10 @@
 	%>
     	You are not logged in<br/>
     	<a href="login.jsp">Please Login</a>
-    <%
-	String action = "createThreadDetails.jsp";	
-	out.println("<form method='post' action='" + action + "'>");
+    	<%
+		String action = "createThreadDetails.jsp";	
+		out.println("<form method='post' action='" + action + "'>");
+	}
 	%>
 		<label>Title</label>
 		<input type="text" name="title" required></input>
