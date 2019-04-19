@@ -34,7 +34,7 @@
 		int counter = 0;//the number of threads I show, use this to help keep track of the threads on the webpage
 
 		//Do I need to put in a limit to how many threads per page? or can it be unlimited...?
-		ResultSet result_threads = stmt.executeQuery(threads_query);
+		ResultSet result_threads = st.executeQuery(threads_query);
 		while(result_threads.next()){
 			int threadid = result_threads.getInt("threadid");
 			Timestamp datecreated = result_threads.getTimestamp("timecreated");
@@ -56,12 +56,12 @@
 			out.print("<div id='hide" + counter + "' style = 'display:none'>");
 			counter = counter + 1;
 
-			String threads_query = "SELECT * FROM Thread WHERE Thread.threadid = " + threadid + " ";
+			threads_query = "SELECT * FROM Thread WHERE Thread.threadid = " + threadid + " ";
 			st = con.createStatement();
-			ResultSet result_threads = st.executeQuery(threads_query);	
+			result_threads = st.executeQuery(threads_query);	
 			while(result_threads.next()){
 
-				int threadid = result_threads.getInt("threadid");
+				threadid = result_threads.getInt("threadid");
 				int user_id = result_threads.getInt("user_id");//the poster
 				Timestamp timecreated = result_threads.getTimestamp("timecreated");
 				String th_title = result_threads.getString("title");
