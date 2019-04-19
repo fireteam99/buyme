@@ -1,3 +1,5 @@
+<%@ page import="java.io.*,java.util.*,java.sql.*"%> 
+<%@ page import="javax.servlet.http.*,javax.servlet.*" %>
 <!DOCTYPE html>
 <html>
    <head>
@@ -12,6 +14,10 @@
 	
 	//get the username from the user_id to show who posted the thread
 	String get_username = "SELECT u.user_id FROM User u WHERE u.username = " + username + " ";
+	String url = "jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme";
+	Class.forName("com.mysql.jdbc.Driver");
+	Connection con = DriverManager.getConnection(url, "cs336", "thisisareallysecurepassword551");
+	Statement st = con.createStatement();
 	st = con.createStatement();
 	ResultSet result_username = st.executeQuery(get_username);
 	String th_username = "";
