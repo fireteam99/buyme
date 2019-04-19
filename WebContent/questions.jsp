@@ -23,8 +23,13 @@
      		    //response.sendRedirect("success.jsp");
 				*/
 				
+				
+				//before we show all the threads, put a search bar at the top of the page, and redirect them to a results page...
+				
+				
+				
 
-		String threads_query = "SELECT * FROM Thread";
+		String threads_query = "SELECT * FROM Thread ORDER BY timecreated ASC";
 				
 		int counter = 0;//the number of threads I show, use this to help keep track of the threads on the webpage
 
