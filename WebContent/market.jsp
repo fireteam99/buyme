@@ -5,12 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Marketplace</title>
-<link rel="stylesheet" href="css/market.css" type="text/css">
 <%@ include file="./partials/commonCss.jsp" %>
+<link rel="stylesheet" href="css/market.css" type="text/css">
 </head>
 <body>
-	<%@ include file="./partials/navbar.jsp"%>
 	<div class="content">
+		<%@ include file="./partials/navbar.jsp"%>
 		<%@ include file="./partials/searchBar.jsp"%>
 		<div class="section-header">
 			<p class="hdr-lrg">Marketplace</p>
