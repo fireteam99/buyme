@@ -83,15 +83,15 @@ public class Item {
 		}
 	}
 	
-	// retrieves a single item in database by id
-	public ResultSet getByID(int auctionID) throws SQLException {
+	// retrieves a single item in database by id (TESTED)
+	public ResultSet getByID(int itemID) throws SQLException {
 		String selectSQL = "SELECT * FROM buyme.Auction WHERE auction_id = ?";
 		try {
 			Connection con = DriverManager.getConnection(
 					"jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme", "cs336",
 					"thisisareallysecurepassword551");
 			PreparedStatement preparedStatement = con.prepareStatement(selectSQL);
-			preparedStatement.setInt(1, auctionID);
+			preparedStatement.setInt(1, itemID);
 			ResultSet rs = preparedStatement.executeQuery();
 			return rs;
 		} catch (SQLException se) {
@@ -132,6 +132,23 @@ public class Item {
 			throw e;
 		}
 	}
+	
+	// deletes an item by id
+	public void deleteByID(int itemID) throws SQLException {
+		String deleteSQL = "DELETE FROM buyme.Auction WHERE auction_id = ?";
+		try {
+			Connection con = DriverManager.getConnection(
+					"jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme", "cs336",
+					"thisisareallysecurepassword551");
+			PreparedStatement preparedStatement = con.prepareStatement(deleteSQL);
+			preparedStatement.setInt(1, itemID);
+			preparedStatement.executeUpdate();
+		} catch (SQLException se) {
+			throw se;
+		} catch (Exception e) {
+			throw e;
+		}
+	}
 		
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -140,33 +157,38 @@ public class Item {
 			// debugging
 			
 			// inserting an item
-//			String itemName = "Test Item";
-//			String seller = "a";
-//			double buyAtPrice = 10.00;
-//			double increment = 1.00;
-//			String itemDescription = "This is a test item.";
-//			int userID = 1;
-//			String subcategoryName = "Phones";
-//			String image = "https://img.letgo.com/images/a9/c5/6e/fa/a9c56efa672d4ccd4ac5c1e4395b544d.jpeg?impolicy=img_600";
-//			Timestamp endDate = new Timestamp(System.currentTimeMillis() + 1000000000);
-//			String categoryName = "Electronics";
-//			item.create(itemName, seller, buyAtPrice, increment, itemDescription, userID, subcategoryName, image, endDate, categoryName);
+			String itemName = "Test Item";
+			String seller = "a";
+			double buyAtPrice = 10.00;
+			double increment = 1.00;
+			String itemDescription = "This is a test item.";
+			int userID = 1;
+			String subcategoryName = "Phones";
+			String image = "https://img.letgo.com/images/a9/c5/6e/fa/a9c56efa672d4ccd4ac5c1e4395b544d.jpeg?impolicy=img_600";
+			Timestamp endDate = new Timestamp(System.currentTimeMillis() + 1000000000);
+			String categoryName = "Electronics";
+			item.create(itemName, seller, buyAtPrice, increment, itemDescription, userID, subcategoryName, image, endDate, categoryName);
 			
-			// search
+			// searching for items
 //			ResultSet rs = item.search("", "Electronics", "Phones", 0, 0, 0);
 //			ResultSet rs = item.searchByCategory("Electronics");
 //			ResultSet rs = item.searchBySubcategory("Phones");
-			ResultSet rs = item.getByID(1);
+//			ResultSet rs = item.getByID(1);
+//			
+//			ResultSetMetaData rsmd = rs.getMetaData();
+//			while(rs.next()) {
+//				for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+//					 if (i > 1) System.out.print(",  ");
+//			        String columnValue = rs.getString(i);
+//			        System.out.print(columnValue + " " + rsmd.getColumnName(i));
+//				}
+//				System.out.println();
+//			}
 			
-			ResultSetMetaData rsmd = rs.getMetaData();
-			while(rs.next()) {
-				for (int i = 1; i <= rsmd.getColumnCount(); i++) {
-					 if (i > 1) System.out.print(",  ");
-			        String columnValue = rs.getString(i);
-			        System.out.print(columnValue + " " + rsmd.getColumnName(i));
-				}
-				System.out.println();
-			}
+			// deleting an item
+//			int auctionID = 1;
+//			item.deleteByID(auctionID);
+			
 		} catch (SQLException se) {
 			se.printStackTrace();
 		} catch (Exception e) {
