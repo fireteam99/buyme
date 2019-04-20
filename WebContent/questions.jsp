@@ -23,54 +23,38 @@
      		    //response.sendRedirect("success.jsp");
 				*/
 				
+			//TO DO:
+			//put a search bar at the top of the page, and use it to change the "threads_query" and redisplay the threads accordingly
+			
+			
 				
-				//before we show all the threads, put a search bar at the top of the page, and redirect them to a results page...
+			String search_input = "";
+     		    
+     		String search_query = "SELECT * FROM Thread WHERE title LIKE %" + search_input + "%";
 				
-				
-				
-
-		String threads_query = "SELECT * FROM Thread ORDER BY timecreated ASC";
-				
-		int counter = 0;//the number of threads I show, use this to help keep track of the threads on the webpage
-
-		//Do I need to put in a limit to how many threads per page? or can it be unlimited...?
-		ResultSet result_threads = st.executeQuery(threads_query);
-		while(result_threads.next()){
-			int threadid = result_threads.getInt("threadid");
-			Timestamp datecreated = result_threads.getTimestamp("timecreated");
-			String description = result_threads.getString("description");
-			String title = result_threads.getString("title");
-
-			out.print("<div id='click" + counter + "'>");
-			out.print("<ul class='thread'>");
-			//out.print("<li>thread: " + threadid + "</li>");
-			out.print("<li><span class='keyword'>Title:</span> " + title + "</li>");
-			out.print("<li><span class='keyword'>Description:</span> " + description + "</li>");
-			out.print("<li><span class='keyword'> on </span> " + datecreated.toString() + "</li>");
-
-			String crea = "createThread.jsp?id=" + threadid;
-			out.print("<li><a href='" + crea + "'><span class='keyword'>new thread</span></a></li>");
-			out.print("</div>");
-
-
-			out.print("<div id='hide" + counter + "' style = 'display:none'>");
-			counter = counter + 1;
-
-			threads_query = "SELECT * FROM Thread WHERE Thread.threadid = " + threadid + " ";
-			st = con.createStatement();
-			result_threads = st.executeQuery(threads_query);	
+     		
+     		
+			String crea = "createThread.jsp?";
+			out.print("<li><a href='" + crea + "'><span class='keyword'>Create a new thread</span></a></li>");  
+     		
+			String threads_query = "SELECT * FROM Thread ORDER BY timecreated ASC";
+			
+			//go through all the threads and print them out
+			//st = con.createStatement();
+			ResultSet result_threads = st.executeQuery(threads_query);	
 			while(result_threads.next()){
 
-				threadid = result_threads.getInt("threadid");
+				int threadid = result_threads.getInt("threadid");
 				int user_id = result_threads.getInt("user_id");//the poster
 				Timestamp timecreated = result_threads.getTimestamp("timecreated");
 				String th_title = result_threads.getString("title");
 				String th_description = result_threads.getString("description");
 				String solved = result_threads.getString("solved");//solved is a BIT type, which is either 0, 1 or null, solved is 1, unsolved is 0, null means who cares if its solved or not
 				
-			    if ((session.getAttribute("user") == null)) {
+			    //if ((session.getAttribute("user") == null)) {
 			    	//they're not logged in
-			    }
+			    	
+			    //}
 
 				//get the username from the user_id to show who posted the thread
 				String get_username = "SELECT u.username FROM User u WHERE u.user_id = " + user_id + " ";
@@ -136,11 +120,12 @@
 				out.print("</ul>");
 
 			}//for the post's while 
-
+			
+				/*
 			out.print("</ul>");
 			out.print("</div>");
 		}//the get threads' while
-
+		*/
 
 				//close connection, right?
 				con.close();
