@@ -136,6 +136,8 @@ body {
 }
 .item-card-price-container {
 	text-align: center;
+	overflow: hidden;
+  	text-overflow: ellipsis;
 }
 .item-card-price {
 	font-size: 20pt;
