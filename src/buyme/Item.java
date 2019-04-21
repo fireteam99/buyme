@@ -11,32 +11,36 @@ public class Item {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+		// System.out.println("sq: item_query" + " sno: " + sortNameOption + " spo: " + sortPriceOption + " sdo:" + sortDateOption);
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			con = DriverManager.getConnection("jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme",
 					"cs336", "thisisareallysecurepassword551");
-
+						
 			if (sortNameOption != 0 || sortPriceOption != 0 || sortDateOption != 0) {
 				selectSQL += " ORDER BY";
 			}
 
-			if (sortNameOption > 0) {
-				selectSQL += " item_name";
-			} else if (sortNameOption < 0) {
-				selectSQL += " item_name DESC";
+			if (sortNameOption != 0) {
+				if (sortNameOption > 0) {
+					selectSQL += " item_name ASC";
+				} else if (sortNameOption < 0) {
+					selectSQL += " item_name DESC";
+				}
+			} else if (sortPriceOption != 0) {
+				if (sortPriceOption > 0) {
+					selectSQL += " buy_at_price ASC";
+				} else if (sortPriceOption < 0) {
+					selectSQL += " buy_at_price DESC";
+				}
+			} else if (sortDateOption != 0) {
+				if (sortDateOption > 0) {
+					selectSQL += " start_date ASC";
+				} else if (sortDateOption < 0) {
+					selectSQL += " start_date DESC";
+				}
 			}
-
-			if (sortPriceOption > 0) {
-				selectSQL += " buy_at_price";
-			} else if (sortPriceOption < 0) {
-				selectSQL += " buy_at_price DESC";
-			}
-
-			if (sortNameOption > 0) {
-				selectSQL += " start_date";
-			} else if (sortNameOption < 0) {
-				selectSQL += " start_date DESC";
-			}
+			
 			ps = con.prepareStatement(selectSQL);
 			ps.setString(1, "%" + item_query + "%");
 			ps.setString(2, "%" + category + "%");
@@ -180,21 +184,21 @@ public class Item {
 			// debugging
 
 			// inserting an item
-//			String itemName = "Test Item";
-//			String seller = "a";
-//			double buyAtPrice = 10.00;
-//			double increment = 1.00;
-//			String itemDescription = "This is a test item.";
-//			int userID = 1;
-//			String subcategoryName = "Phones";
-//			String image = "https://img.letgo.com/images/a9/c5/6e/fa/a9c56efa672d4ccd4ac5c1e4395b544d.jpeg?impolicy=img_600";
+//			String itemName = "Macbook Pro 2018 15in";
+//			String seller = "r";
+//			double buyAtPrice = 499.00;
+//			double increment = 5.00;
+//			String itemDescription = "Lightly used. Comes with charger and other accessories.";
+//			int userID = 6;
+//			String subcategoryName = "Laptops";
+//			String image = "https://img.letgo.com/images/6c/3d/e5/20/6c3de52082a1845cfcb74db0b8b3ee4e.png?impolicy=img_600";
 //			Timestamp endDate = new Timestamp(System.currentTimeMillis() + 1000000000);
 //			String categoryName = "Electronics";
 //			item.create(itemName, seller, buyAtPrice, increment, itemDescription, userID, subcategoryName, image,
 //					endDate, categoryName);
 
 			// searching for items
-			ResultSet rs = item.search("item", "", "", 0, 0, 0);
+			ResultSet rs = item.search("", "", "", 0, 0, -1);
 //			ResultSet rs = item.searchByCategory("Electronics");
 //			ResultSet rs = item.searchBySubcategory("Phones");
 //			ResultSet rs = item.getByID(1);
