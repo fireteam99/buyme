@@ -8,8 +8,8 @@
 </head>
 <body>
 	<h2>Customer Representative Homepage</h2>
-	<a>Check Messages</a><br>
+	<a href="questions.jsp>Forums</a><br>
 	<a href="userManager.jsp">Manage User Accounts</a><br>
-	<a>Manage Auctions</a>
+	<a href="auctionManager.jsp">Manage Auctions</a>
 </body>
 </html>
