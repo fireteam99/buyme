@@ -7,7 +7,7 @@
 <body>
 	<h1>Administrator Page</h1>
 	<h2>Manage customer representative accounts.</h2>
-	<a href="createCustRep.jsp">Create customer representative account.</a>
+	<a href="createCustRep.jsp">Create customer representative account.</a> <br>
 	<a href="custRepManager.jsp">Delete customer representative account.</a>
 	<br>
 	<h2>Generate Sales Reports</h2>
