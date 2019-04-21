@@ -1,13 +1,13 @@
 <section>
 	<div class="top-bar">
 		<a class="btn-primary" href="#categories" rel="modal:open"> View Categories</a>
-		<form name="search" action="/search.jsp">
+		<form name="search" action=<%= request.getContextPath() +  "/partials/handleSearchBar.jsp" %> method="POST">
 			<span class="search-bar">
-				<input class="search-form" type="text" placeholder="Search for anything...">
-				<button class="search-btn" type="submit">Go</button> 
+				<input name="search-query" class="search-form" type="text" placeholder="Search for anything...">
+				<button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
 			</span>
-			<select class="btn-primary" name="category-list" form="search">
-				<option value="all categories" selected="selected">All Categories</option>
+			<select name=subcategory class="btn-primary" name="category-list">
+				<option value="all" selected="selected">All</option>
 				<option value="vehicles">Vehicles</option>
 				<option value="electronics">Electronics</option>
 			</select>

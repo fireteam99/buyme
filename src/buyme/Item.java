@@ -6,12 +6,13 @@ public class Item {
 	// allows you to search items while filtering by category, subcategory and
 	// sorting by name, price, and date (TESTED)
 	public ResultSet search(String item_query, String category, String subcategory, int sortNameOption,
-			int sortPriceOption, int sortDateOption) throws SQLException {
+			int sortPriceOption, int sortDateOption) throws Exception {
+		String selectSQL = "SELECT * FROM buyme.Auction WHERE item_name LIKE ? AND category_name LIKE ? AND subcategory_name LIKE ?";
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
-			String selectSQL = "SELECT * FROM buyme.Auction WHERE item_name LIKE ? AND category_name LIKE ? AND subcategory_name LIKE ?";
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			con = DriverManager.getConnection("jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme",
 					"cs336", "thisisareallysecurepassword551");
 
@@ -46,19 +47,6 @@ public class Item {
 			throw se;
 		} catch (Exception e) {
 			throw e;
-		} finally {
-			try {
-				rs.close();
-			} catch (Exception e) {
-				/* ignored */ }
-			try {
-				ps.close();
-			} catch (Exception e) {
-				/* ignored */ }
-			try {
-				con.close();
-			} catch (Exception e) {
-				/* ignored */ }
 		}
 	}
 
@@ -80,19 +68,6 @@ public class Item {
 			throw se;
 		} catch (Exception e) {
 			throw e;
-		} finally {
-			try {
-				rs.close();
-			} catch (Exception e) {
-				/* ignored */ }
-			try {
-				ps.close();
-			} catch (Exception e) {
-				/* ignored */ }
-			try {
-				con.close();
-			} catch (Exception e) {
-				/* ignored */ }
 		}
 	}
 
@@ -114,19 +89,6 @@ public class Item {
 			throw se;
 		} catch (Exception e) {
 			throw e;
-		} finally {
-			try {
-				rs.close();
-			} catch (Exception e) {
-				/* ignored */ }
-			try {
-				ps.close();
-			} catch (Exception e) {
-				/* ignored */ }
-			try {
-				con.close();
-			} catch (Exception e) {
-				/* ignored */ }
 		}
 	}
 
@@ -148,19 +110,6 @@ public class Item {
 			throw se;
 		} catch (Exception e) {
 			throw e;
-		} finally {
-			try {
-				rs.close();
-			} catch (Exception e) {
-				/* ignored */ }
-			try {
-				ps.close();
-			} catch (Exception e) {
-				/* ignored */ }
-			try {
-				con.close();
-			} catch (Exception e) {
-				/* ignored */ }
 		}
 	}
 
@@ -197,15 +146,6 @@ public class Item {
 			throw se;
 		} catch (Exception e) {
 			throw e;
-		} finally {
-			try {
-				ps.close();
-			} catch (Exception e) {
-				/* ignored */ }
-			try {
-				con.close();
-			} catch (Exception e) {
-				/* ignored */ }
 		}
 	}
 
@@ -225,15 +165,6 @@ public class Item {
 			throw se;
 		} catch (Exception e) {
 			throw e;
-		} finally {
-			try {
-				ps.close();
-			} catch (Exception e) {
-				/* ignored */ }
-			try {
-				con.close();
-			} catch (Exception e) {
-				/* ignored */ }
 		}
 	}
 
@@ -244,34 +175,34 @@ public class Item {
 			// debugging
 
 			// inserting an item
-			String itemName = "Test Item";
-			String seller = "a";
-			double buyAtPrice = 10.00;
-			double increment = 1.00;
-			String itemDescription = "This is a test item.";
-			int userID = 1;
-			String subcategoryName = "Phones";
-			String image = "https://img.letgo.com/images/a9/c5/6e/fa/a9c56efa672d4ccd4ac5c1e4395b544d.jpeg?impolicy=img_600";
-			Timestamp endDate = new Timestamp(System.currentTimeMillis() + 1000000000);
-			String categoryName = "Electronics";
-			item.create(itemName, seller, buyAtPrice, increment, itemDescription, userID, subcategoryName, image,
-					endDate, categoryName);
+//			String itemName = "Test Item";
+//			String seller = "a";
+//			double buyAtPrice = 10.00;
+//			double increment = 1.00;
+//			String itemDescription = "This is a test item.";
+//			int userID = 1;
+//			String subcategoryName = "Phones";
+//			String image = "https://img.letgo.com/images/a9/c5/6e/fa/a9c56efa672d4ccd4ac5c1e4395b544d.jpeg?impolicy=img_600";
+//			Timestamp endDate = new Timestamp(System.currentTimeMillis() + 1000000000);
+//			String categoryName = "Electronics";
+//			item.create(itemName, seller, buyAtPrice, increment, itemDescription, userID, subcategoryName, image,
+//					endDate, categoryName);
 
 			// searching for items
-//			ResultSet rs = item.search("", "Electronics", "Phones", 0, 0, 0);
+			ResultSet rs = item.search("", "Electronics", "Phones", 0, 0, 0);
 //			ResultSet rs = item.searchByCategory("Electronics");
 //			ResultSet rs = item.searchBySubcategory("Phones");
 //			ResultSet rs = item.getByID(1);
-//			
-//			ResultSetMetaData rsmd = rs.getMetaData();
-//			while(rs.next()) {
-//				for (int i = 1; i <= rsmd.getColumnCount(); i++) {
-//					 if (i > 1) System.out.print(",  ");
-//			        String columnValue = rs.getString(i);
-//			        System.out.print(columnValue + " " + rsmd.getColumnName(i));
-//				}
-//				System.out.println();
-//			}
+			
+			ResultSetMetaData rsmd = rs.getMetaData();
+			while(rs.next()) {
+				for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+					 if (i > 1) System.out.print(",  ");
+			        String columnValue = rs.getString(i);
+			        System.out.print(columnValue + " " + rsmd.getColumnName(i));
+				}
+				System.out.println();
+			}
 
 			// deleting an item
 //			int auctionID = 1;

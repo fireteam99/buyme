@@ -20,7 +20,7 @@
 		<section>
 			<div class="featured-search-container">
 				<p class="featured-heading hdr-med featured-search">Searching
-					For: ${param.search-query}
+					For: <%= request.getParameter("search-query") %>
 				</p>
 			</div>
 			<div class="card sort-filter">
@@ -63,8 +63,7 @@
 							int spo = Integer.parseInt(request.getParameter("spo"));
 							int sdo = Integer.parseInt(request.getParameter("sdo"));
 						try {
-							ResultSet rs = item.search(sq, cat, subcat, sno, spo, sdo);
-							
+							ResultSet rs = item.search(cat, subcat, sq, sno, spo, sdo);
 							// print out the items
 							if (!rs.isBeforeFirst()) { // check to see if search is empty
 					%>
@@ -103,9 +102,11 @@
 							}
 							
 						} catch (SQLException se) {
-							response.sendRedirect("../500.jsp");
+							se.printStackTrace();
+							//response.sendRedirect("../500.jsp");
 						} catch (Exception e) {
-							response.sendRedirect("../500.jsp");
+							e.printStackTrace();
+							//response.sendRedirect("../500.jsp");
 						}
 					%>
 					<div class="item-card featured-item">
