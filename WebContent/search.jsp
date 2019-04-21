@@ -62,7 +62,7 @@
 				<div class="flex-container">
 					<% 
 						// get list of auctions/items
-						Item item = new Item();
+						Item searchItem = new Item();
 					
 						String sq = "";
 						if (request.getParameter("search-query") != null) {
@@ -95,37 +95,37 @@
 						
 						try {
 							// System.out.println("Search-Query2: " + sq);
-							ResultSet rs = item.search(sq, cat, subcat, sno, spo, sdo);
+							ResultSet rsItems = searchItem.search(sq, cat, subcat, sno, spo, sdo);
 							// print out the items
-							if (!rs.isBeforeFirst()) { // check to see if search is empty
+							if (!rsItems.isBeforeFirst()) { // check to see if search is empty
 					%>
 							<p class="body-lrg">No items to show...</p>
 					<%
 								
 							} else {
-								while(rs.next()) {
+								while(rsItems.next()) {
 									// list out the results
 					%>
 									<div class="item-card featured-item">
 										<div class="item-card-image-container">
 											<img class="item-card-image"
-												src="<%= rs.getString("image") %>"
+												src="<%= rsItems.getString("image") %>"
 												alt="item picture">
 										</div>
 										<div class="item-card-info">
 											<div class="item-card-title-container">
-												<p class="item-card-title hdr-sml"><%= rs.getString("item_name") %></p>
+												<p class="item-card-title hdr-sml"><%= rsItems.getString("item_name") %></p>
 											</div>
 											<div class="item-card-details-container">
 												<p class="item-card-details body-sml">
-												<%= rs.getString("item_description") %>
+												<%= rsItems.getString("item_description") %>
 												</p>
 											</div>
 											<div class="item-card-price-container">
-												<p class="hdr-med item-card-price">$<%= rs.getString("buy_at_price") %></p>
+												<p class="hdr-med item-card-price">$<%= rsItems.getString("buy_at_price") %></p>
 											</div>
 											<div class="item-card-btn-container">
-												<a class="btn-details btn-secondary" href="<%= request.getContextPath() + "/item.jsp?auctionID=" + rs.getString("auction_id") %>">More Details</a>
+												<a class="btn-details btn-secondary" href="<%= request.getContextPath() + "/item.jsp?auctionID=" + rsItems.getString("auction_id") %>">More Details</a>
 											</div>
 										</div>
 									</div>

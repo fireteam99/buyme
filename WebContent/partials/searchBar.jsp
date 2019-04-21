@@ -1,3 +1,5 @@
+<%@page import="buyme.Category"%>
+<%@page import="java.sql.*"%>
 <section>
 	<div class="top-bar">
 		<a class="btn-primary" href="#categories" rel="modal:open"> View Categories</a>
@@ -17,18 +19,26 @@
 <!-- Modal for list of categories -->
 <div id="categories" class="modal categories-modal">
 	<div class="categories-wrapper">
-		<div class="card category-card">
-			<a href="#" class="hdr-sml category-hdr">Category 1</a>
-		</div>
-		<div class="card category-card">
-			<a href="#" class="hdr-sml category-hdr">Category 2</a>
-		</div>
-		<div class="card category-card">
-			<a href="#" class="hdr-sml category-hdr">Category 3</a>
-		</div>
-		<div class="card category-card">
-			<a href="#" class="hdr-sml category-hdr">Category 4</a>
-		</div>
+		<% 
+			Category searchBarCategory = new Category(); 
+			try {
+				ResultSet rsSearchBarCats = searchBarCategory.getAll();
+				
+				while(rsSearchBarCats.next()) {
+			%>
+				<div class="card category-card">
+					<a href="#" class="hdr-sml category-hdr"><%= rsSearchBarCats.getString("category_name") %></a>
+				</div>
+			<%
+				}
+			} catch (SQLException se) {
+				se.printStackTrace();
+				//response.sendRedirect("../500.jsp");
+			} catch (Exception e) {
+				e.printStackTrace();
+				//response.sendRedirect("../500.jsp");
+			}
+ 		%>
 	</div>
 	<a class="link" href="#" rel="modal:close">Close</a>
 </div>
