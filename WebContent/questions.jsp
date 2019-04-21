@@ -3,9 +3,15 @@
 <!DOCTYPE html>
 <html>
    <head>
-      <title>Questions Forum - Threads:</title>
+      <title>Questions Forum:</title>
    </head>
    <body>
+   	<h3>Search for questions</h3>
+		<form>
+      	<input type="text" name="search" placeholder="Name a question">
+      	<button type="submit">Search</button>
+    	</form>
+   
      		<%    
      		  String url = "jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme";
      		  Class.forName("com.mysql.jdbc.Driver");
@@ -16,29 +22,30 @@
      			Statement st = con.createStatement();
      		    
      		    java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
-     		    /*
-     		    //String insertStatement = String.format("INSERT INTO User (created_at, full_name, password, username, email, user_id) VALUES ('%s', '%s', '%s', '%s', '%s', null);", date.toString(), name, password, username, email);
-     		    st.executeUpdate(insertStatement);
-     		    session.setAttribute("user", username);
-     		    //response.sendRedirect("success.jsp");
-				*/
 				
-			//TO DO:
+			//TO DO: finished?
 			//put a search bar at the top of the page, and use it to change the "threads_query" and redisplay the threads accordingly
 			
 			
 				
 			String search_input = "";
      		    
-     		String search_query = "SELECT * FROM Thread WHERE title LIKE %" + search_input + "%";
-				
+     		String search_query = "SELECT * FROM Thread WHERE title LIKE '%" + search_input + "%' ORDER BY timecreated ASC";
+     		
+			String threads_query = "SELECT * FROM Thread ORDER BY timecreated ASC";
+			
+        	String s = request.getParameter("search");
+        	if (s != null && s.length() > 0) {
+        		search_input = s;
+        		threads_query = search_query;
+        	} else {
+        		//do nothing
+        	}
      		
      		
 			String crea = "createThread.jsp?";
 			out.print("<li><a href='" + crea + "'><span class='keyword'>Create a new thread</span></a></li>");  
      		
-			String threads_query = "SELECT * FROM Thread ORDER BY timecreated ASC";
-			
 			//go through all the threads and print them out
 			//st = con.createStatement();
 			ResultSet result_threads = st.executeQuery(threads_query);	
