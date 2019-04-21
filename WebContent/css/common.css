@@ -129,15 +129,16 @@ body {
 	font-size: 14pt;
 }
 .item-card-details-container {
+	overflow: hidden;
+  	text-overflow: ellipsis;
 	margin-top: .3em;
+	height: 2.5em;
 }
 .item-card-details {
 	color: #312742;'
 }
 .item-card-price-container {
 	text-align: center;
-	overflow: hidden;
-  	text-overflow: ellipsis;
 }
 .item-card-price {
 	font-size: 20pt;

@@ -12,7 +12,7 @@ public class Item {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			con = DriverManager.getConnection("jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme",
 					"cs336", "thisisareallysecurepassword551");
 
@@ -51,12 +51,13 @@ public class Item {
 	}
 
 	// retrieves all items in a category (TESTED)
-	public ResultSet searchByCategory(String category) throws SQLException {
+	public ResultSet searchByCategory(String category) throws Exception {
 		String selectSQL = "SELECT * FROM buyme.Auction WHERE category_name = ?";
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			con = DriverManager.getConnection(
 					"jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme", "cs336",
 					"thisisareallysecurepassword551");
@@ -72,12 +73,13 @@ public class Item {
 	}
 
 	// retrieves all items in a subcategory (TESTED)
-	public ResultSet searchBySubcategory(String subcategory) throws SQLException {
+	public ResultSet searchBySubcategory(String subcategory) throws Exception {
 		String selectSQL = "SELECT * FROM buyme.Auction WHERE subcategory_name = ?";
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			con = DriverManager.getConnection(
 					"jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme", "cs336",
 					"thisisareallysecurepassword551");
@@ -93,12 +95,13 @@ public class Item {
 	}
 
 	// retrieves a single item in database by id (TESTED)
-	public ResultSet getByID(int itemID) throws SQLException {
+	public ResultSet getByID(int itemID) throws Exception {
 		String selectSQL = "SELECT * FROM buyme.Auction WHERE auction_id = ?";
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			con = DriverManager.getConnection(
 					"jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme", "cs336",
 					"thisisareallysecurepassword551");
@@ -116,7 +119,7 @@ public class Item {
 	// creates an item(auction) in database (TESTED)
 	public void create(String itemName, String seller, double buyAtPrice, double increment, String itemDescription,
 			int userID, String subcategoryName, String image, Timestamp endDate, String categoryName)
-			throws SQLException {
+			throws Exception {
 		String insertSQL = "INSERT INTO buyme.Auction"
 				+ "(item_name, current_bid, seller, buy_at_price, increment, auction_id,"
 				+ "item_description, user_id, subcategory_name, image, end_date, start_date, category_name)"
@@ -124,6 +127,7 @@ public class Item {
 		Connection con = null;
 		PreparedStatement ps = null;
 		try {
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			con = DriverManager.getConnection(
 					"jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme", "cs336",
 					"thisisareallysecurepassword551");
@@ -150,11 +154,12 @@ public class Item {
 	}
 
 	// deletes an item by id
-	public void deleteByID(int itemID) throws SQLException {
+	public void deleteByID(int itemID) throws Exception {
 		String deleteSQL = "DELETE FROM buyme.Auction WHERE auction_id = ?";
 		Connection con = null;
 		PreparedStatement ps = null;
 		try {
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			con = DriverManager.getConnection(
 					"jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme", "cs336",
 					"thisisareallysecurepassword551");
@@ -189,11 +194,12 @@ public class Item {
 //					endDate, categoryName);
 
 			// searching for items
-			ResultSet rs = item.search("", "Electronics", "Phones", 0, 0, 0);
+			ResultSet rs = item.search("item", "", "", 0, 0, 0);
 //			ResultSet rs = item.searchByCategory("Electronics");
 //			ResultSet rs = item.searchBySubcategory("Phones");
 //			ResultSet rs = item.getByID(1);
 			
+			System.out.println("Items found:");
 			ResultSetMetaData rsmd = rs.getMetaData();
 			while(rs.next()) {
 				for (int i = 1; i <= rsmd.getColumnCount(); i++) {
