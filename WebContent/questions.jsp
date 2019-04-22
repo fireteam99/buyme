@@ -74,9 +74,16 @@
 				//TO DO:
 				//for solved need to get the value from the databse and convert the value to a string ie. 'true'/'false'
 				
+				String th_s = "";
+				if(solved.equals("0")){
+					th_s = "Unsolved";	
+				}else{
+					th_s = "Solved";	
+				}
+				
 				out.print("<ul class='thread'>");
 				out.print("<li><span class='keyword'>Title:</span> " + th_title + "</li>");
-				//out.print("<li><span class='keyword'>Solved?:</span> " + th_title + "</li>");
+				out.print("<li><span class='keyword'>Solved?:</span> " + th_s + "</li>");
 				out.print("<li><span class='keyword'>Description:</span> " + th_description + "</li>");
 				out.print("<li><span class='keyword'> by </span> " + th_username + "</a></li>");
 				out.print("<li><span class='keyword'> on </span> " + timecreated.toString() + "</li>");
@@ -126,7 +133,7 @@
 
 				out.print("</ul>");
 
-			}//for the post's while 
+			}//for the threads's while 
 			
 				/*
 			out.print("</ul>");
