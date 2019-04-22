@@ -29,10 +29,10 @@
 		}
 	
 		String tuserid = "";//the poster of the thread
-		String get_posterid = "SELECT t.user_id FROM Thread t WHERE t.threadid = '" + threadid + "' ";
+		String get_posterid = "SELECT * FROM Thread t WHERE t.threadid = '" + threadid + "' ";
 		result_userid = st.executeQuery(get_posterid);
 		if(result_userid.next()){
-			tuserid = result_userid.getString("t.user_id");	
+			tuserid = result_userid.getString("user_id");	
 		}
 		
 		boolean isCustomerRep = false;

@@ -22,9 +22,9 @@
     	String user_id = "";
     	//TO DO: get userID from username
     	ResultSet rs;
-    	rs = st.executeQuery("SELECT u.user_id FROM User u WHERE u.username = '" + user + "'");
+    	rs = st.executeQuery("SELECT * FROM User u WHERE u.username = '" + user + "'");
     	if (rs.next()) {
-    		user_id = rs.getString("u.user_id");
+    		user_id = rs.getString("user_id");
     	} else {
     		//they're logged in but not registered??, this is not a case (no username changes)
     	}

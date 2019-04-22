@@ -13,7 +13,7 @@
 	String userid = "";//get the userid from the username in the database
 	
 	//get the username from the user_id to show who posted the thread
-	String get_username = "SELECT u.user_id FROM User u WHERE u.username = '" + username + "' ";
+	String get_username = "SELECT * FROM User u WHERE u.username = '" + username + "' ";
 	String url = "jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme";
 	Class.forName("com.mysql.jdbc.Driver");
 	Connection con = DriverManager.getConnection(url, "cs336", "thisisareallysecurepassword551");
@@ -22,7 +22,7 @@
 	ResultSet result_username = st.executeQuery(get_username);
 	String th_username = "";
 	if(result_username.next()){
-		th_username = result_username.getString("u.username");
+		th_username = result_username.getString("username");
 	}
 	
 	String euserid = request.getParameter("userid");
