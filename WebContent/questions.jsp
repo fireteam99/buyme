@@ -46,6 +46,8 @@
 			String crea = "createThread.jsp?";
 			out.print("<li><a href='" + crea + "'><span class='keyword'>Create a new thread</span></a></li>");  
      		
+			//Note: If I wanted to just show the title and then expand when clicked on, I would have to use javascript
+			
 			//go through all the threads and print them out
 			//st = con.createStatement();
 			ResultSet result_threads = st.executeQuery(threads_query);	
@@ -104,6 +106,7 @@
 				String posts_query = "SELECT * FROM Post WHERE Post.threadid = " + threadid + "";
 				st = con.createStatement();
 				ResultSet result_posts = st.executeQuery(posts_query);
+				//TO DO: if there aren't any posts, say "No posts yet for this thread" when clicked on.
 				while(result_posts.next()){
 					int postid = result_posts.getInt("postid");
 					int po_user_id = result_posts.getInt("user_id");

@@ -12,10 +12,12 @@
     	You are not logged in<br/>
     	<a href="login.jsp">Please Login</a>
     	<%
-		String action = "createThreadDetails.jsp";	
-		out.println("<form method='post' action='" + action + "'>");
-	}
+   	 }else{
+		//String action = "createThreadDetails.jsp";	
+		//out.println("<form method='post' action='" + action + "'>");
 	%>
+	<form action="createThreadDetails.jsp" method="POST">
+		
 		<label>Title</label>
 		<input type="text" name="title" required></input>
 
@@ -27,6 +29,9 @@
 
 	</form>
      
+     <%
+   	 }
+     %>
      
    </body>
 </html>
