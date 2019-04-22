@@ -134,8 +134,10 @@
 		}//the get threads' while
 		*/
 
-				//close connection, right?
-				con.close();
+			//close connection, right?
+			con.close();
+	  } catch(SQLException se) {
+	      se.printStackTrace();
 		} catch (Exception ex) {//I did not evenly space out/format this code
 			out.println(ex);
 		}
