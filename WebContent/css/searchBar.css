@@ -25,3 +25,13 @@
 	align-items: center;
   	justify-content: center;
 }
+@media only screen and (max-width: 1035px) {
+	.search-bar-form {
+		width: 30em;
+	}
+}
+@media only screen and (max-width: 870px) {
+	.search-bar-form {
+		width: 20em;
+	}
+}

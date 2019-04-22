@@ -27,18 +27,24 @@ body {
 	justify-content: flex-start;
 }
 .sort-filter-card {
-	text-align: center;
 	height: 5em;
-	width: 7em;
+	width: 8em;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 }
 .sort-filter-card-header {
 	color: rgba(49,39,66,1);
 }
-.sort-buttons-container {
-	margin-top: 1em;
-}
 .btn-sort {
 	padding: .7em;
 	margin: .5em;
-	border-radius: 40%;
+	border-radius: 20%;
+	height: 1em;
+	width: 1em;
+}
+.btn-expir {
+	padding: 1em;
+    margin: .1em;
 }

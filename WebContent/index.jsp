@@ -127,6 +127,12 @@
 					</div>				
 				</div>
 			</div>
+			<div class="card item-container">
+				<p class="category-heading hdr-sml">Computers</p>
+				<div class="flex-container">
+					<p class="body-lrg">No items to show...</p>
+				</div>
+			</div>
 		</section>
 	</div>
 	<%@ include file="./partials/footer.jsp" %>
