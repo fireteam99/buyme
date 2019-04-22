@@ -17,7 +17,6 @@
 					ResultSet allCategories = searchBarCategory.getAll();
 					while(allCategories.next()) {
 						String currentCategory = allCategories.getString("category_name");
-						System.out.println(currentCategory);
 						%>
 						<optgroup label="<%= currentCategory %>">
 						<%

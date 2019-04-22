@@ -34,6 +34,7 @@
 				</p>
 			</div>
 			<div class="card sort-filter">
+				
 				<p class="category-heading hdr-sml">Sort</p>
 				<div class="sort-filter-container">
 					<div class="card sort-filter-card">
