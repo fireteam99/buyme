@@ -20,13 +20,14 @@
     	String body = request.getParameter("body");
     	String solved = request.getParameter("solved");//this needs to be 0, 1, or null for the database
     	//convert the solved input into terms we can put in the database
-    	
+    	/*
     	String s = "";
     	if(solved==null){
     		s = "0";//not checked, a.k.a unsolved
     	}else{
     		s = "1";//its checked so mark it solved
     	}
+    	*/
     	
     	
     	String user_id = "";
@@ -38,7 +39,14 @@
 			user_id = result_username.getString("u.user_id");
 		}
 		java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
-		String topost = String.format("INSERT INTO `Thread` (threadid, user_id, timecreated, title, description, solved) VALUES (null, '%s', '%s', '%s', '%s', '%s');", user_id, date.toString(), title, body, s);//insert 0 (its BIT type, only 0,1,or null)
+		String topost = "";
+		
+		if(solved== null){
+			topost = String.format("INSERT INTO `Thread` (threadid, user_id, timecreated, title, description, solved) VALUES (null, '%s', '%s', '%s', '%s', 0);", user_id, date.toString(), title, body);//insert 0 (its BIT type, only 0,1,or null)
+		}else{
+			topost = String.format("INSERT INTO `Thread` (threadid, user_id, timecreated, title, description, solved) VALUES (null, '%s', '%s', '%s', '%s', 1);", user_id, date.toString(), title, body);//insert 0 (its BIT type, only 0,1,or null)
+		}
+		
 		out.println(topost);
 		st.executeUpdate(topost);
 

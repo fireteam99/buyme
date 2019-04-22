@@ -30,7 +30,7 @@
     	}
     	
 	 	java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
-		String topost = String.format("INSERT INTO `Thread` (threadid, user_id, timecreated, title, description, solved) VALUES (null, '%s', '%s', '%s', '%s', '0');", user_id, date.toString(), title, body);//insert 0 (its BIT type, only 0,1,or null)
+		String topost = String.format("INSERT INTO `Thread` (threadid, user_id, timecreated, title, description, solved) VALUES (null, '%s', '%s', '%s', '%s', 0);", user_id, date.toString(), title, body);//insert 0 (its BIT type, only 0,1,or null)
 		out.println(topost);
 		st.executeUpdate(topost);
 
