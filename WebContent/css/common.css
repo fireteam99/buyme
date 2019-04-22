@@ -152,6 +152,10 @@ body {
 	margin-top: .6em;
 	text-align: center;
 }
+.expired-item {
+	filter: grayscale(100%);
+	filter: brightness(50%);
+}
 .featured-heading {
 	display: inline-block;
 	font-weight: 800;

@@ -6,8 +6,11 @@ public class Item {
 	// allows you to search items while filtering by category, subcategory and
 	// sorting by name, price, and date (TESTED)
 	public ResultSet search(String item_query, String category, String subcategory, int sortNameOption,
-			int sortPriceOption, int sortDateOption) throws Exception {
+			int sortPriceOption, int sortDateOption, boolean showExpired) throws Exception {
 		String selectSQL = "SELECT * FROM buyme.Auction WHERE item_name LIKE ? AND category_name LIKE ? AND subcategory_name LIKE ?";
+		if (!showExpired) {
+			selectSQL += " AND end_date >= NOW()";
+		}
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -198,7 +201,7 @@ public class Item {
 //					endDate, categoryName);
 
 			// searching for items
-			ResultSet rs = item.search("", "", "", 0, 0, -1);
+			ResultSet rs = item.search("", "", "", 0, 0, -1, true);
 //			ResultSet rs = item.searchByCategory("Electronics");
 //			ResultSet rs = item.searchBySubcategory("Phones");
 //			ResultSet rs = item.getByID(1);

@@ -10,6 +10,7 @@
 
 <%@page import="buyme.Item"%>
 <%@page import="java.sql.*"%>
+<%@page import="java.time.*"%>
 
 <%
 	String baseURL = request.getContextPath() + "/search.jsp?search-query=" + request.getParameter("search-query") + "&subcategory=" + request.getParameter("subcategory");
@@ -33,8 +34,8 @@
 					For: "<%= request.getParameter("search-query") %>"
 				</p>
 			</div>
+			
 			<div class="card sort-filter">
-				
 				<p class="category-heading hdr-sml">Sort</p>
 				<div class="sort-filter-container">
 					<div class="card sort-filter-card">
@@ -56,6 +57,31 @@
 						<a href="<%= baseURL %>"class="btn-secondary">Clear</a>
 					</div>
 				</div>
+			</div>
+			
+			<div class="card sort-filter">
+				<p class="category-heading hdr-sml">Filter</p>
+					<div class="card sort-filter-card">
+					<%
+						boolean showExpired = false;
+						if (request.getParameter("show-expired") != null) {
+							showExpired = Boolean.parseBoolean(request.getParameter("show-expired"));
+						}
+						String currentURL = request.getRequestURL().toString().toString() + "?" + request.getQueryString().toString();
+						if (showExpired) {
+							// show button to hide expired
+							%>
+							<a href="<%= currentURL.replace("&show-expired=true","") %>"class="btn-secondary btn-expir">Hide Expired</a>
+							<%
+						} else {
+							// show button to show expired
+							%>
+							<a href="<%= currentURL + "&show-expired=true" %>"class="btn-secondary btn-expir">Show Expired</a>
+							<%
+						}
+					%>
+						
+					</div>
 			</div>
 			
 			<div class="card item-container">
@@ -96,7 +122,7 @@
 						
 						try {
 							// System.out.println("Search-Query2: " + sq);
-							ResultSet rsItems = searchItem.search(sq, cat, subcat, sno, spo, sdo);
+							ResultSet rsItems = searchItem.search(sq, cat, subcat, sno, spo, sdo, showExpired);
 							// print out the items
 							if (!rsItems.isBeforeFirst()) { // check to see if search is empty
 					%>
@@ -106,8 +132,21 @@
 							} else {
 								while(rsItems.next()) {
 									// list out the results
-					%>
+									
+									// grays out card if expired
+									Instant currentTime = Instant.now();
+									Instant endTime = rsItems.getTimestamp("end_date").toInstant();
+									
+									if (currentTime.compareTo(endTime) > 1) { // expired
+										%>
+									<div class="item-card featured-item expired-item">
+										<%
+									} else {
+										%>
 									<div class="item-card featured-item">
+										<%
+									}
+					%>
 										<div class="item-card-image-container">
 											<img class="item-card-image"
 												src="<%= rsItems.getString("image") %>"
