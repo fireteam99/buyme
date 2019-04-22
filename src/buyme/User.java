@@ -16,7 +16,7 @@ public class User {
 		catch(Exception e) {}
 	}
 	
-	public ResultSet getUser(String username,String password){
+	public ResultSet getUser(String username,String password) throws Exception{
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme", "cs336", "thisisareallysecurepassword551");
@@ -27,11 +27,11 @@ public class User {
 		    rs=st.executeQuery(selectStatement);
 		    return rs;
 		}
-		catch(SQLException se) {} 
-		catch(Exception e) {}
+		catch(SQLException se) {throw se;} 
+		catch(Exception e) {throw e;}
 	}
 	
-	public ResultSet searchUsers(String search){
+	public ResultSet searchUsers(String search) throws Exception {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme", "cs336", "thisisareallysecurepassword551");
@@ -42,11 +42,11 @@ public class User {
 		    rs=st.executeQuery(selectStatement);
 		    return rs;
 		}
-		catch(SQLException se) {} 
-		catch(Exception e) {}
+		catch(SQLException se) {throw se;} 
+		catch(Exception e) {throw e;}
 	}
 	
-	public void deleteUser(String username){
+	public void deleteUser(String username) throws Exception {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme", "cs336", "thisisareallysecurepassword551");
@@ -54,7 +54,7 @@ public class User {
 		    String deleteStatement = "DELETE FROM User WEHRE username='"+username+"'";
 		    st.executeQuery(deleteStatement);
 		}
-		catch(SQLException se) {} 
-		catch(Exception e) {}
+		catch(SQLException se) {throw se;} 
+		catch(Exception e) {throw e;}
 	}
 }
