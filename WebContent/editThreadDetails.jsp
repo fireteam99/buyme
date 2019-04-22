@@ -32,7 +32,7 @@
     	
     	String user_id = "";
     	//get the user_id from the username to show who posted the thread
-	String get_user_id = "SELECT u.user_id FROM User u WHERE u.username = " + user + " ";
+	String get_user_id = "SELECT u.user_id FROM User u WHERE u.username = '" + user + "' ";
 	Statement st = con.createStatement();
 		ResultSet result_username = st.executeQuery(get_user_id);
 		if(result_username.next()){
