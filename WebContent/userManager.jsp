@@ -6,6 +6,7 @@
 <title>Manage Users</title>
 </head>
 <body>
+	<a href="custRepDashboard.jsp">Return to dashboard.</a>
 	<h3>Manage Customer Accounts</h3>
 	<form>
       <input type="text" name="search" placeholder="Username">
