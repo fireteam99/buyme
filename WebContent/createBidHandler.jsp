@@ -25,8 +25,8 @@
 	
 		
 	} catch(Exception e){
-		out.println("There was an error");
-		e.printStackTrace();
+		out.println("There was an error. Your bid must be at least greater than the previous bid by the increment specified. Please go back and try again.");
+		
 	}
 	
 			
