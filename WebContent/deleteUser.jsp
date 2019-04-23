@@ -11,11 +11,19 @@ try{
 	Class.forName("com.mysql.jdbc.Driver");
 	Connection con = DriverManager.getConnection("jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme", "cs336", "thisisareallysecurepassword551");
 	Statement st = con.createStatement();
-	ResultSet rs;
 	String usn=request.getParameter("usn");
-	st.executeUpdate("DELETE FROM User WHERE username='"+usn+"'");
+	int res=st.executeUpdate("DELETE FROM User WHERE username='"+usn+"'");
+	if(res>0){
+		out.println("User deleted.");
+	}
+	else{
+		out.println("Error deleting user.");
+		out.println("<a href='custRepDashboard.jsp'>Return to dashboard.</a>");
+	}
 }
 catch (SQLException se){
+	out.println("Error.");
+	out.println("<a href='custRepDashboard.jsp'>Return to dashboard.</a>");
 	se.printStackTrace();
 }
 catch (Exception e){
