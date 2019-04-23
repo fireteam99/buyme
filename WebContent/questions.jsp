@@ -41,11 +41,12 @@
         	} else {
         		//do nothing
         	}
+     		//I hope this works....
+     		%>
+     		<ul class= "threads">
+			<li><a href="createThread.jsp"><span class="keyword">Create a new thread</span></a></li>
      		
-     		
-			String crea = "createThread.jsp?";
-			out.print("<li><a href='" + crea + "'><span class='keyword'>Create a new thread</span></a></li>");  
-     		
+     		<%
 			//Note: If I wanted to just show the title and then expand when clicked on, I would have to use javascript
 			
 			//go through all the threads and print them out
@@ -102,9 +103,11 @@
 				
 				//in an ideal world I would only show these options to the poster, but...
 				String href2 = "viewQuestion.jsp?threadid=" + threadid + "&user_id=" + user_id;
-				out.print("<li><a href='" + href2 + "'><span class='keyword'>" + th_title + "</span></a></li>");
 				
+				%>
+				<li><a href="<%=href2%>"><span class="keyword"><%=th_title%></span></a></li>
 				
+				<%
 				//for another day
 				//String href2 = "deleteThread.jsp?threadid=" + threadid + "&user_id=" +  user_id;
 				//out.print("<li><a href='" + href2 + "'><span class='keyword'>delete</span></a></li>");
@@ -146,8 +149,9 @@
 					
 				}//for the posts' while
 					*/
-				out.print("</ul>");
-
+				%>
+				</ul>
+				<%
 			}//for the threads's while 
 			
 				/*

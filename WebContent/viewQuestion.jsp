@@ -60,27 +60,29 @@
 				}else{
 					th_s = "Solved";	
 				}
+			%>
+				<ul class="thread">
+				<li><span class="keyword">Title:</span><%=th_title%></li>
+				<li><span class="keyword">Solved?:</span><%=th_s%></li>
+				<li><span class="keyword">Description:</span><%=th_description%></li>
+				<li><span class="keyword"> by </span><%=th_username%></li>
+				<li><span class="keyword"> on </span><%=timecreated.toString()%></li>
 				
-				out.print("<ul class='thread'>");
-				out.print("<li><span class='keyword'>Title:</span> " + th_title + "</li>");
-				out.print("<li><span class='keyword'>Solved?:</span> " + th_s + "</li>");
-				out.print("<li><span class='keyword'>Description:</span> " + th_description + "</li>");
-				out.print("<li><span class='keyword'> by </span> " + th_username + "</a></li>");
-				out.print("<li><span class='keyword'> on </span> " + timecreated.toString() + "</li>");
-				
-				
+				<%
 				//in an ideal world I would only show these options to the poster, but...
 				String href1 = "editThread.jsp?threadid=" + threadid + "&user_id=" + user_id;
-				out.print("<li><a href='" + href1 + "'><span class='keyword'>edit</span></a></li>");
-				
+				%>
+				<li><a href="<%=href1%>"><span class="keyword">edit</span></a></li>
+				<%
 				//for another day
 				//String href2 = "deleteThread.jsp?threadid=" + threadid + "&user_id=" +  user_id;
 				//out.print("<li><a href='" + href2 + "'><span class='keyword'>delete</span></a></li>");
 				
 				//create post
 				String post = "createPost.jsp?threadid=" + threadid;
-				out.print("<li><a href='" + post + "'><span class='keyword'>new post</span></a></li>");
-
+				%>
+				<li><a href="<%=post%>"><span class="keyword">new post</span></a></li>
+				<%
 				//put the posts for the threads (the comments)
 				String posts_query = "SELECT * FROM Post WHERE Post.threadid = " + threadid + "";
 				st = con.createStatement();
@@ -101,20 +103,20 @@
 						po_username = result_username2.getString("username");
 					}
 					
+					%>
+					<ul class="posts">
+					<li><%=po_username%><span class="keyword"> posted:</span> </li>
+					<li><%=po_body%></li>
+					<li><span class="keyword">on <%=po_timecreated.toString()%></span></li>
 					
-					out.print("<ul class='posts'>");
-					out.print("<li>" + po_username + "</a> <span class='keyword'> posted:</span> </li>");
-					out.print("<li>" + po_body + "</li>");
-					out.print("<li><span class='keyword'>on </span>" + po_timecreated.toString() + "</li>");
+					</ul>
+					
+					<%
 					//should I insert some sort of divider?
-					
-					
-					out.print("</ul>");
-					
 				}//for the posts' while
-
-				out.print("</ul>");
-
+				%>
+				</ul>
+				<%
 			}//for the threads's while 
 			
 				/*

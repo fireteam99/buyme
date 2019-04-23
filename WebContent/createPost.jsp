@@ -10,8 +10,9 @@
 	String threadid = request.getParameter("threadid");
 	String user = (String)session.getAttribute("user");//actually don't even need to pass this, cause they're logged in
 	String action = "createPostDetails.jsp?threadid=" + threadid + "&user=" + user;	
-	out.println("<form method='post' action='" + action + "'>");
 	%>
+	
+	<form method="post" action="<%=action%>">
 	
 		<label>Body</label>
 		<textarea name="body" placeholder="What do you want to say"  required></textarea>

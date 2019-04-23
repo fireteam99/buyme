@@ -37,19 +37,21 @@
 	
 	//String euserid = request.getParameter("userid");//get userid from user parameter
 
-	if(!th_userid.equals(userid)){
+	if(!th_userid.equals(userid)){//do I need to take this out of the 'out.print' form too?
 		out.print("You may not edit a thread that you haven't posted");
 	}//end of if error
 	else{//TO DO: can I make the placeholder for title and description the old stuff?
-		String action = "editThreadAction.jsp?threadid=" + threadid;
-		out.println("<form method='post' action='" + action + "'>");
+		String action = "editThreadDetails.jsp?threadid=" + threadid;
+		%>
 		
-			out.println("<label>Title</label>");
-			out.println("<input type='text' name='title' placeholder='" + title + "' required></input>");
+		<form method="post" action="<%=action%>">
+		
+			<label>Title</label>
+			<input type="text" name="title" placeholder="<%=title%>" required></input>
 
-			out.println("<label>Description</label>");
-			out.println("<textarea name='body' placeholder='" + description + "'  required></textarea>");
-			%>
+			<label>Description</label>
+			<textarea name="body" placeholder="<%=description%>"  required></textarea>
+			
 			<label>Solved?</label>
 			<input type="checkbox" name="solved" value="Solved"> 
 
