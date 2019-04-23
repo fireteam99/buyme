@@ -12,11 +12,7 @@ public class SalesReport {
 				rs = totalEarnings();
 				output="Total Earnings: $";
 				if(rs.next()){
-					if (rs.getString(1) == null) {
-						output+= "0";
-					} else {
-						output+=rs.getString(1);	
-					}
+					output+=rs.getString(1);	
 				}
 			}
 			else if(report.equals("earnPerItem")){
@@ -106,7 +102,7 @@ public class SalesReport {
 	    	con = DriverManager.getConnection("jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme", "cs336", "thisisareallysecurepassword551");
 	    	st = con.createStatement();	
 	    	java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
-	    	String query="SELECT SUM(current_bid) FROM Auction WHERE TIMESTAMP(end_date)<'"+date+"' AND current_bid > min_sell_price";
+	    	String query="SELECT SUM(current_bid) FROM Auction WHERE TIMESTAMP(end_date)<'"+date+"' AND current_bid>buy_at_price";
 	    	rs = st.executeQuery(query);
 	    	return rs;
 		}

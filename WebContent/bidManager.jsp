@@ -12,7 +12,8 @@
 <table>
 	<tr><th>Bid ID</th><th>Bidder ID</th><th>Price</th><th>Bid Time</th></tr>
 <% 
-	ResultSet rs= Bid.showBids(Integer.parseInt(request.getParameter("aid")));
+	Bid b=new Bid();
+	ResultSet rs=b.show(Integer.parseInt(request.getParameter("aid")));
 	while(rs.next()){
 %>
 	<tr>
