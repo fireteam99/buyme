@@ -122,6 +122,12 @@ public class Item {
 			throw e;
 		}
 	}
+	
+	// retrieves items sorted by number of bids
+	
+	// retrieves items sorted by newness
+	
+	// retrieves items sorted by oldness
 
 	// creates an item(auction) in database (TESTED)
 	public void create(String itemName, String seller, double buyAtPrice, double increment, String itemDescription,
