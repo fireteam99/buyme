@@ -37,17 +37,17 @@
 			<td>
 			<form action="editUser.jsp" method="POST">
       			<input type="submit" value="Edit">
-      			<input type="hidden" value=<%=rs.getString("username")%> name="usn">
+      			<input type="hidden" value=<%=rs.getString("username")%> name="username">
       			<input type="hidden" value=<%=rs.getString("full_name")%> name="name">
        			<input type="hidden" value=<%=rs.getString("email")%> name="email">
-     			</form>
-     			</td>
-     			<td>
-     			<form method="POST">
-      			<input type="submit" value="Delete" onclick="if(confirm('Are you sure? This action cannot be undone.')){form.action='deleteUser.jsp'}">
-     			<input type="hidden" name="usn" value=<%=rs.getString("username")%>> 
-     			</form>
-     			</td>
+   			</form>
+   			</td>
+   			<td>
+  			<form method="POST">
+   				<input type="submit" value="Delete" onclick="if(confirm('Are you sure? This action cannot be undone.')){form.action='deleteUser.jsp'}">
+  				<input type="hidden" name="usn" value=<%=rs.getString("username")%>> 
+  			</form>
+   			</td>
 			
 		</tr>     
 <%    

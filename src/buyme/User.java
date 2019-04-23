@@ -80,7 +80,7 @@ public class User {
 			Connection con = DriverManager.getConnection("jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme", "cs336", "thisisareallysecurepassword551");
 		    Statement st = con.createStatement();
 		    String deleteStatement = "DELETE FROM User WEHRE username='"+username+"'";
-		    st.executeQuery(deleteStatement);
+		    st.executeUpdate(deleteStatement);
 		}
 		catch(SQLException se) {throw se;} 
 		catch(Exception e) {throw e;}
