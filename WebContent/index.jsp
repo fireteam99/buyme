@@ -19,12 +19,17 @@
 				<p class="hdr-med subtitle">Please buy our shit.</p>
 			</div>
 			<div class="reg-login">
+			
 				<a class="btn-primary" href="login.jsp">Login</a> <a
 					class="btn-primary" href="register.jsp">Register</a> <a
 					class="btn-primary" href="market.jsp">Let's Shop</a>
+
+				
+
+
 			</div>
 		</header>
-		<section>
+		<!-- <section>
 			<div class="featured-search-container">
 				<p class="featured-heading hdr-med featured-search">
 					Today's Featured Items <i class="fas fa-fire"></i>
@@ -144,7 +149,7 @@
 					<p class="body-lrg">No items to show...</p>
 				</div>
 			</div>
-		</section>
+		</section> -->
 	</div>
 	<%@ include file="./partials/footer.jsp"%>
 	<%@ include file="./partials/commonScripts.jsp"%>

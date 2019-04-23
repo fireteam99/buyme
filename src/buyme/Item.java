@@ -5,7 +5,7 @@ import java.sql.*;
 public class Item {
 	// allows you to search items while filtering by category, subcategory and
 	// sorting by name, price, and date (TESTED)
-	public ResultSet search(String item_query, String category, String subcategory, int sortNameOption,
+	public static ResultSet search(String item_query, String category, String subcategory, int sortNameOption,
 			int sortPriceOption, int sortDateOption, boolean showExpired) throws Exception {
 		String selectSQL = "SELECT * FROM buyme.Auction WHERE item_name LIKE ? AND category_name LIKE ? AND subcategory_name LIKE ?";
 		if (!showExpired) {
@@ -58,7 +58,7 @@ public class Item {
 	}
 
 	// retrieves all items in a category (TESTED)
-	public ResultSet searchByCategory(String category) throws Exception {
+	public static ResultSet searchByCategory(String category) throws Exception {
 		String selectSQL = "SELECT * FROM buyme.Auction WHERE category_name = ?";
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -80,7 +80,7 @@ public class Item {
 	}
 
 	// retrieves all items in a subcategory (TESTED)
-	public ResultSet searchBySubcategory(String subcategory) throws Exception {
+	public static ResultSet searchBySubcategory(String subcategory) throws Exception {
 		String selectSQL = "SELECT * FROM buyme.Auction WHERE subcategory_name = ?";
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -102,7 +102,7 @@ public class Item {
 	}
 
 	// retrieves a single item in database by id (TESTED)
-	public ResultSet getByID(int itemID) throws Exception {
+	public static ResultSet getByID(int itemID) throws Exception {
 		String selectSQL = "SELECT * FROM buyme.Auction WHERE auction_id = ?";
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -130,7 +130,7 @@ public class Item {
 	// retrieves items sorted by oldness
 
 	// creates an item(auction) in database (TESTED)
-	public void create(String itemName, String seller, double buyAtPrice, double increment, String itemDescription,
+	public static void create(String itemName, String seller, double buyAtPrice, double increment, String itemDescription,
 			int userID, String subcategoryName, String image, Timestamp endDate, String categoryName)
 			throws Exception {
 		String insertSQL = "INSERT INTO buyme.Auction"
@@ -167,7 +167,7 @@ public class Item {
 	}
 
 	// deletes an item by id
-	public void deleteByID(int itemID) throws Exception {
+	public static void deleteByID(int itemID) throws Exception {
 		String deleteSQL = "DELETE FROM buyme.Auction WHERE auction_id = ?";
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -188,7 +188,7 @@ public class Item {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Item item = new Item();
+		
 		try {
 			// debugging
 
@@ -207,7 +207,7 @@ public class Item {
 //					endDate, categoryName);
 
 			// searching for items
-			ResultSet rs = item.search("", "", "", 0, 0, -1, true);
+			ResultSet rs = Item.search("", "", "", 0, 0, -1, true);
 //			ResultSet rs = item.searchByCategory("Electronics");
 //			ResultSet rs = item.searchBySubcategory("Phones");
 //			ResultSet rs = item.getByID(1);

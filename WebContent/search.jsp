@@ -89,7 +89,7 @@
 				<div class="flex-container">
 					<% 
 						// get list of auctions/items
-						Item searchItem = new Item();
+
 					
 						String sq = "";
 						if (request.getParameter("search-query") != null) {
@@ -122,7 +122,7 @@
 						
 						try {
 							// System.out.println("Search-Query2: " + sq);
-							ResultSet rsItems = searchItem.search(sq, cat, subcat, sno, spo, sdo, showExpired);
+							ResultSet rsItems = Item.search(sq, cat, subcat, sno, spo, sdo, showExpired);
 							// print out the items
 							if (!rsItems.isBeforeFirst()) { // check to see if search is empty
 					%>
@@ -162,7 +162,7 @@
 												</p>
 											</div>
 											<div class="item-card-price-container">
-												<p class="hdr-med item-card-price">$<%= rsItems.getString("buy_at_price") %></p>
+												<p class="hdr-med item-card-price">$<%= rsItems.getString("initial_price") %></p>
 											</div>
 											<div class="item-card-btn-container">
 												<a class="btn-details btn-secondary" href="<%= request.getContextPath() + "/item.jsp?auctionID=" + rsItems.getString("auction_id") %>">More Details</a>

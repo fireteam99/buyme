@@ -17,7 +17,7 @@
 		</div>
 		<section>
 		
-			<%
+			<%-- <%
 				// display personalized section only if user is logged in
 				if (session.getAttribute("user") != null) {
 					%>
@@ -105,7 +105,7 @@
 					</div>
 					<%
 				}
-			%>
+			%> --%>
 			
 			<div class="featured-search-container">
 				<p class="featured-heading hdr-med featured-search">Curated <i class="fab fa-get-pocket"></i></p>

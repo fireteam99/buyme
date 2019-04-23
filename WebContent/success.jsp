@@ -8,7 +8,7 @@
 %>
      Welcome <%=session.getAttribute("user")%>
      <a href="userPage.jsp">Go To User Page</a>
-    <a href='logout.jsp'>Log out</a>
+     <a href='logout.jsp'>Log out</a>
 <%
     }
 %>

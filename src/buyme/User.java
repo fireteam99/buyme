@@ -46,6 +46,17 @@ public class User {
 		catch(Exception e) {throw e;}
 	}
 	
+	public static int getUserIDfromUsername(String username){
+		try {
+			ResultSet rs = getUser(username);
+			rs.next();
+			int user_id = rs.getInt("user_id");
+			return user_id;
+		} catch (Exception e) {
+			return -1;
+		}
+	}
+	
 	
 	
 	public ResultSet searchUsers(String search) throws Exception {

@@ -3,6 +3,27 @@ import java.sql.*;
 import java.text.SimpleDateFormat;
 
 public class Bid {
+	
+	public static void createBid(int auction_id, int user_id, double price) throws SQLException, Exception{
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme", "cs336", "thisisareallysecurepassword551");
+	    	Statement st = con.createStatement();  
+	    	String createStatement= String.format("INSERT INTO Bid (auction_id, user_id, price) VALUES (%d, %d, %f);",auction_id, user_id, price);  
+	    	st.executeUpdate(createStatement);
+	    	
+		}
+		catch(SQLException se){
+			throw se;
+		}
+		catch(Exception e){
+			throw e;
+		}
+	}
+	
+	
+	
+	
 	public void remove(int bid) throws SQLException, Exception{
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
@@ -54,14 +75,14 @@ public class Bid {
 			throw e;
 		}
 	}
-	public ResultSet show(int aid) throws SQLException, Exception{
+	public static ResultSet showBids(int auction_id) throws SQLException, Exception{
 		ResultSet rs=null;
 
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme", "cs336", "thisisareallysecurepassword551");
 	    	Statement st = con.createStatement();    	
-	    	String bidSelect="SELECT * FROM Bid WHERE auction_id="+aid+" ORDER BY time_create DESC";
+	    	String bidSelect="SELECT * FROM Bid WHERE auction_id="+auction_id+" ORDER BY time_create DESC";
 	    	rs=st.executeQuery(bidSelect);
 	    	return rs;
 		}
