@@ -22,12 +22,18 @@
 	ResultSet result_username = st.executeQuery(get_username);
 	String th_username = "";
 	if(result_username.next()){
-		th_username = result_username.getString("username");
+		userid= result_username.getString("user_id");
+	}	
+	String get_thuserid = "SELECT * FROM Thread t WHERE t.threadid = '" + threadid + "'";//get the userid of the threads poster
+	result_username = st.executeQuery(get_thuserid);
+	String th_userid = "";
+	if(result_username.next()){
+		th_userid = result_username.getString("user_id");
 	}
 	
-	String euserid = request.getParameter("userid");
+	//String euserid = request.getParameter("userid");//get userid from user parameter
 
-	if(!euserid.equals(userid)){
+	if(!th_userid.equals(userid)){
 		out.print("You may not edit a thread that you haven't posted");
 	}//end of if error
 	else{//TO DO: can I make the placeholder for title and description the old stuff?
