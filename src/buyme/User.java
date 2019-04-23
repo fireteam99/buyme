@@ -16,20 +16,37 @@ public class User {
 		catch(Exception e) {}
 	}
 	
-	public ResultSet getUser(String username,String password) throws Exception{
+	public static ResultSet getUser(String username,String password) throws Exception{
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme", "cs336", "thisisareallysecurepassword551");
 		    Statement st = con.createStatement();
 		    java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
 		    ResultSet rs;
-		    String selectStatement = "SELECT * FROM User WEHRE username='"+username+"' AND password='"+password+"'";
+		    String selectStatement = "SELECT * FROM User WHERE username='"+username+"' AND password='"+password+"'";
 		    rs=st.executeQuery(selectStatement);
 		    return rs;
 		}
 		catch(SQLException se) {throw se;} 
 		catch(Exception e) {throw e;}
 	}
+	
+	public static ResultSet getUser(String username) throws Exception{ // OVERLOADED FOR JUST USER
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme", "cs336", "thisisareallysecurepassword551");
+		    Statement st = con.createStatement();
+		    java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
+		    ResultSet rs;
+		    String selectStatement = "SELECT * FROM User WHERE username='"+username+"'";
+		    rs=st.executeQuery(selectStatement);
+		    return rs;
+		}
+		catch(SQLException se) {throw se;} 
+		catch(Exception e) {throw e;}
+	}
+	
+	
 	
 	public ResultSet searchUsers(String search) throws Exception {
 		try {
