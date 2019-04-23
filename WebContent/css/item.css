@@ -39,7 +39,7 @@ body {
 	
 }
 .item-sub-header {
-	margin-top: .5em;
+	margin-top: .1em;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
@@ -68,4 +68,29 @@ body {
 }
 .bid-label {
     padding-left: .7em;
+}
+.checkbox {
+	margin-top: .5em;
+}
+.container-container {
+	display: flex;
+	justify-content: center;
+}
+.btn-container {
+	text-align: center;
+}
+.auto-bid-incr {
+	transition: all .3s ease;
+}
+.past-bids-container {
+	margin: 1em;
+	margin-top: 5em;
+}
+.past-bid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.table-title {
+	margin: 1em;
 }
