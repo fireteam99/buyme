@@ -47,9 +47,24 @@
 			<div class="bidding-container">
 				<div class="card make-bid-container">
 					<p class="hdr-med">Make a Bid</p>
-					<form>
-						<input class="input-form" type="number" step="1"/>
-						<input class="input-form" type="number" step="0.01"/>
+					<form class="make-bid-form">
+						<div>
+							<input name="bid-amount" class="input-form" type="number" step="1" min="0" oninput="validity.valid||(value='');"/>
+							<label class="input-label bid-label" for="bid-amount">Initial Bid</label>
+						</div>
+						<div>
+							<input name="auto-bid-amount" id="auto-bid-amount" class="input-form" type="number" step="0.01" min="0" oninput="validity.valid||(value='');" disabled/>
+							<label class="input-label bid-label" for="login">Auto Bid Increment</label>
+							
+							<div class="pretty p-switch p-slim">
+						        <input type="checkbox" name="auto-bid-selector" id="auto-bid-selector"/>
+						        <div class="state p-info">
+						            <label>Enable Auto Bidding</label>
+						        </div>
+						    </div>
+
+						</div>
+						
 						<button class="btn-secondary-danger" type="reset">Clear</button>
 						<button class="btn-secondary" type="submit">Bid</button>
 					</form>
@@ -61,5 +76,6 @@
 	</div>
 	<%@ include file="./partials/footer.jsp" %>
 	<%@ include file="./partials/commonScripts.jsp" %>
+	<script src="js/item.js"></script>
 </body>
 </html>
