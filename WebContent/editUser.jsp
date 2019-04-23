@@ -12,7 +12,7 @@
 	String email=request.getParameter("email");
 	String name=request.getParameter("name");
 %>
-	<form method="POST" action="userUpdate.jsp">
+	<form method="POST" action="editUserHandler.jsp">
     	Full Name: <input type="text" name="name" value=<%=name%>> <br/>
       	Email: <input type="text" name="email" value=<%=email%>> <br/>
       	<input type="hidden" name="oldName" value=<%=name%>>

@@ -8,6 +8,7 @@
 </head>
 <body>
 <h2>Active Auctions</h2>
+
 <table>
 	<tr><th>Auction ID</th><th>Item Name</th><th>Start Date</th><th>End Date</th></tr>
 <% 
@@ -38,5 +39,6 @@
 }
 %>
 </table>
+
 </body>
 </html>

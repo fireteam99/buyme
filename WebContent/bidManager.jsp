@@ -8,6 +8,7 @@
 </head>
 <body>
 <h2>All Bids</h2>
+
 <table>
 	<tr><th>Bid ID</th><th>Bidder ID</th><th>Price</th><th>Bid Time</th></tr>
 <% 
@@ -33,5 +34,6 @@
 	}
 %>
 </table>
+
 </body>
 </html>
