@@ -36,21 +36,16 @@ public class Bid {
 		}
 	}
 	
-	public String showEdit(int bid, int aid) throws SQLException,Exception{
-		String edit=null;
+	public ResultSet showEdit(int bid, int aid) throws SQLException,Exception{
+		ResultSet rs=null;
+
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme", "cs336", "thisisareallysecurepassword551");
 	    	Statement st = con.createStatement();  
 	    	String selectStatement="SELECT * FROM Bid WHERE bid="+bid+" AND aid="+aid;
-	    	ResultSet rs=st.executeQuery(selectStatement);
-	    	edit+="<form action='editBidDetails.jsp' method='POST'>"
-	    	    	+"Auction ID <input type='number' name='aid' value="+rs.getInt("auction_id")+"><br>"
-	    	    	+"Bid ID <input type='number' name='bid' value="+rs.getInt("bid_id")+"><br>"
-	    	    	+"User ID <input type='number' name='uid' value="+rs.getInt("user_id")+"><br>"
-	    	    	+"Price <input type='number' name='price' value='"+rs.getDouble("price")+"'><br>"
-	    	    	+"<input type='submit' value='Save Changes'></form>";
-	    	return edit;
+	    	rs=st.executeQuery(selectStatement);
+	    	return rs;
 		}
 		catch(SQLException se){
 			throw se;
@@ -59,34 +54,16 @@ public class Bid {
 			throw e;
 		}
 	}
-	public String show(int aid) throws SQLException, Exception{
-		String re="";
+	public ResultSet show(int aid) throws SQLException, Exception{
+		ResultSet rs=null;
+
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme", "cs336", "thisisareallysecurepassword551");
 	    	Statement st = con.createStatement();    	
 	    	String bidSelect="SELECT * FROM Bid WHERE auction_id="+aid+" ORDER BY time_create DESC";
-	    	ResultSet rs=st.executeQuery(bidSelect);
-	    	re+="<table>";
-	    	re+="<tr><th>Bid ID</th><th>Bidder ID</th><th>Price</th><th>Bid Time</th></tr>";
-	    	while(rs.next()){
-	    		re+="<tr>";
-	    		re+="<td>"+rs.getInt("bid_id")+"</td>";	
-	    		re+="<td>"+rs.getDouble("user_id")+"</td>";		
-	    		re+="<td>"+rs.getInt("price")+"</td>";		
-	    		re+="<td>"+rs.getTimestamp("time_create")+"</td>";
-	    		re+="<td><form action='editBid.jsp' method='POST'><input type='submit' value='Edit'>"
-	    				+ "<input type='hidden' name='aid' value="+aid
-	    				+ "<input type='hidden' name='bid' value="+rs.getInt("bid_id")
-	    				+ "</form></td>";
-	    		if(rs.getInt("price")==rs.getInt("current_bid")){
-	    			re+="<td><form action='deleteBid.jsp' method='POST'><input type='submit' value='Delete'>"
-	    					+ "<input type='hidden' name='bid' value="+Integer.toString(rs.getInt("bid_id"))+"></form></td>";
-	    		}
-	    		re+="</tr>";
-	    	}
-	    	re+="</table>";
-	    	return re;
+	    	rs=st.executeQuery(bidSelect);
+	    	return rs;
 		}
 		catch(SQLException se){
 			throw se;
