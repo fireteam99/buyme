@@ -162,7 +162,7 @@
 												</p>
 											</div>
 											<div class="item-card-price-container">
-												<p class="hdr-med item-card-price">$<%= rsItems.getString("initial_price") %></p>
+												<p class="hdr-med item-card-price">$<%= rsItems.getString("current_bid") %></p>
 											</div>
 											<div class="item-card-btn-container">
 												<a class="btn-details btn-secondary" href="<%= request.getContextPath() + "/item.jsp?auctionID=" + rsItems.getString("auction_id") %>">More Details</a>
