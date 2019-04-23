@@ -28,15 +28,15 @@
 			
 			
 				
-			String search_input = "";
+			String search_input = request.getParameter("search");
      		    
      		String search_query = "SELECT * FROM Thread WHERE title LIKE '%" + search_input + "%' ORDER BY timecreated ASC";
      		
 			String threads_query = "SELECT * FROM Thread ORDER BY timecreated ASC";
 			
-        	String s = request.getParameter("search");
-        	if (s != null && s.length() > 0) {
-        		search_input = s;
+        	//String s = request.getParameter("search");
+        	if (search_input != null && search_input.length() > 0) {
+        		//search_input = s;
         		threads_query = search_query;
         	} else {
         		//do nothing

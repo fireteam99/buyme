@@ -87,25 +87,25 @@
 				ResultSet result_posts = st.executeQuery(posts_query);
 				//TO DO: if there aren't any posts, say "No posts yet for this thread" when clicked on.
 				while(result_posts.next()){
-					int postid = result_posts.getInt("postid");
+					int postid = result_posts.getInt("post_id");
 					int po_user_id = result_posts.getInt("user_id");
 					Timestamp po_timecreated = result_posts.getTimestamp("timecreated");
 					String po_body = result_posts.getString("body");
 
 					//get the username of the poster
 					String po_username = "";
-					String get_username2 = "SELECT u.username FROM User u WHERE u.user_id = " + po_user_id + " ";
+					String get_username2 = "SELECT * FROM User u WHERE u.user_id = " + po_user_id + " ";
 					st = con.createStatement();
 					ResultSet result_username2 = st.executeQuery(get_username2);
 					if(result_username2.next()){
-						po_username = result_username2.getString("u.username");
+						po_username = result_username2.getString("username");
 					}
 					
 					
 					out.print("<ul class='posts'>");
 					out.print("<li>" + po_username + "</a> <span class='keyword'> posted:</span> </li>");
 					out.print("<li>" + po_body + "</li>");
-					out.print("<li><span class='keyword'>on</span>" + po_timecreated.toString() + "</li>");
+					out.print("<li><span class='keyword'>on </span>" + po_timecreated.toString() + "</li>");
 					//should I insert some sort of divider?
 					
 					
