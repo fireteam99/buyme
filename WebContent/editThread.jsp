@@ -27,8 +27,12 @@
 	String get_thuserid = "SELECT * FROM Thread t WHERE t.threadid = '" + threadid + "'";//get the userid of the threads poster
 	result_username = st.executeQuery(get_thuserid);
 	String th_userid = "";
+	String title = "";
+	String description = "";
 	if(result_username.next()){
 		th_userid = result_username.getString("user_id");
+		title = result_username.getString("title");
+		description = result_username.getString("description");
 	}
 	
 	//String euserid = request.getParameter("userid");//get userid from user parameter
@@ -39,13 +43,13 @@
 	else{//TO DO: can I make the placeholder for title and description the old stuff?
 		String action = "editThreadAction.jsp?threadid=" + threadid;
 		out.println("<form method='post' action='" + action + "'>");
-		%>
-			<label>Title</label>
-			<input type="text" name="title" required></input>
+		
+			out.println("<label>Title</label>");
+			out.println("<input type='text' name=" + title + " required></input>");
 
-			<label>Description</label>
-			<textarea name="body" placeholder="What is your question?"  required></textarea>
-			
+			out.println("<label>Description</label>");
+			out.println("<textarea name='body' placeholder=" + description + "  required></textarea>");
+			%>
 			<label>Solved?</label>
 			<input type="checkbox" name="solved" value="Solved"> 
 
