@@ -32,9 +32,9 @@ public class Item {
 				}
 			} else if (sortPriceOption != 0) {
 				if (sortPriceOption > 0) {
-					selectSQL += " current_bid ASC";
+					selectSQL += " buy_at_price ASC";
 				} else if (sortPriceOption < 0) {
-					selectSQL += " current_bid DESC";
+					selectSQL += " buy_at_price DESC";
 				}
 			} else if (sortDateOption != 0) {
 				if (sortDateOption > 0) {
