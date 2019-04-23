@@ -13,7 +13,7 @@ try{
 	Statement st = con.createStatement();
 	ResultSet rs;
 	String usn=request.getParameter("usn");
-	rs=st.executeQuery("DELETE FROM User WHERE username='"+usn+"'");
+	st.executeUpdate("DELETE FROM User WHERE username='"+usn+"'");
 }
 catch (SQLException se){
 	se.printStackTrace();
