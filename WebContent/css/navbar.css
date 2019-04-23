@@ -6,6 +6,7 @@
 	box-shadow: 0em .5em 2em rgba(107, 107, 107, 0.59);
 }
 .nav-btn {
+	color: #312742;
 	text-decoration: none;
 	background-color: transparent;
 	border-radius: 1em;
@@ -13,5 +14,6 @@
 	transition: all .2s ease;
 }
 .nav-btn:hover {
+	color: #7f65ab;
 	background-color: #ededed;
 }
