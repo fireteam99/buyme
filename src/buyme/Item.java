@@ -123,7 +123,26 @@ public class Item {
 		}
 	}
 	
-	// retrieves items sorted by number of bids
+	// retrieves items sorted by number of bids descending
+	public static ResultSet getHotItems() throws Exception {
+		String selectSQL = "SELECT *, COUNT(*) AS num_bids FROM buyme.Auction AS a INNER JOIN buyme.Bid AS b WHERE a.auction_id = b.auction_id AND end_date >= NOW() GROUP BY a.auction_id ORDER BY num_bids DESC";
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			con = DriverManager.getConnection(
+					"jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme", "cs336",
+					"thisisareallysecurepassword551");
+			ps = con.prepareStatement(selectSQL);
+			rs = ps.executeQuery();
+			return rs;
+		} catch (SQLException se) {
+			throw se;
+		} catch (Exception e) {
+			throw e;
+		}
+	}
 	
 	// retrieves items sorted by newness
 	
@@ -185,6 +204,7 @@ public class Item {
 			throw e;
 		}
 	}
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -207,10 +227,11 @@ public class Item {
 //					endDate, categoryName);
 
 			// searching for items
-			ResultSet rs = Item.search("", "", "", 0, 0, -1, true);
+//			ResultSet rs = Item.search("", "", "", 0, 0, -1, true);
 //			ResultSet rs = item.searchByCategory("Electronics");
 //			ResultSet rs = item.searchBySubcategory("Phones");
 //			ResultSet rs = item.getByID(1);
+			ResultSet rs = Item.getHotItems();
 			
 			System.out.println("Items found:");
 			ResultSetMetaData rsmd = rs.getMetaData();

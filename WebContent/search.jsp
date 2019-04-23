@@ -183,6 +183,7 @@
 					%>
 				</div>
 			</div>
+			</div>
 		</section>
 	</div>
 	<%@ include file="./partials/footer.jsp"%>
