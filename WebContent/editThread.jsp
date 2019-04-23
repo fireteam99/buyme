@@ -45,7 +45,7 @@
 		out.println("<form method='post' action='" + action + "'>");
 		
 			out.println("<label>Title</label>");
-			out.println("<input type='text' name='" + title + "' required></input>");
+			out.println("<input type='text' name='title' placeholder='" + title + "' required></input>");
 
 			out.println("<label>Description</label>");
 			out.println("<textarea name='body' placeholder='" + description + "'  required></textarea>");
