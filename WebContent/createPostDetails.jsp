@@ -65,7 +65,7 @@
     			String title = request.getParameter("title");
 
 			java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
-			String topost = String.format("INSERT INTO `Post` (threadid, post_id, user_id, body, timecreated) VALUES ('%s', null, '%s', '%s', '%s', '%s');", threadid, user_id, date.toString(), title, body);
+			String topost = String.format("INSERT INTO `Post` (threadid, post_id, user_id, body, timecreated) VALUES ('%s', null, '%s', '%s', '%s');", threadid, user_id, body, date.toString());
 			out.println(topost);
 			st.executeUpdate(topost);
 

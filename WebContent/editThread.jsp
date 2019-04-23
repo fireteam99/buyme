@@ -45,10 +45,10 @@
 		out.println("<form method='post' action='" + action + "'>");
 		
 			out.println("<label>Title</label>");
-			out.println("<input type='text' name=" + title + " required></input>");
+			out.println("<input type='text' name='" + title + "' required></input>");
 
 			out.println("<label>Description</label>");
-			out.println("<textarea name='body' placeholder=" + description + "  required></textarea>");
+			out.println("<textarea name='body' placeholder='" + description + "'  required></textarea>");
 			%>
 			<label>Solved?</label>
 			<input type="checkbox" name="solved" value="Solved"> 

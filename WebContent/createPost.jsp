@@ -15,7 +15,7 @@
 	
 		<label>Body</label>
 		<textarea name="body" placeholder="What do you want to say"  required></textarea>
-		<input type="submit" name="po_submit" value="po_submit"></input>
+		<input type="submit" name="po_submit" value="Submit"></input>
 
 		</form>
      
