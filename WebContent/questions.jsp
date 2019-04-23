@@ -8,7 +8,7 @@
    <body>
    	<h3>Search for questions</h3>
 		<form>
-      	<input type="text" name="search" placeholder="Name a question">
+      	<input type="text" name="search" placeholder="Search through question titles">
       	<button type="submit">Search</button>
     	</form>
    
