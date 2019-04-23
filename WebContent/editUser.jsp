@@ -8,8 +8,7 @@
 <body>
 	<h2>Edit User Details</h2>
 <%
-	String usn=request.getParameter("username");
-	System.out.println(usn);
+	String usn=request.getParameter("usn");
 	String email=request.getParameter("email");
 	String name=request.getParameter("name");
 %>
@@ -18,7 +17,6 @@
       	Email: <input type="text" name="email" value=<%=email%>> <br/>
       	<input type="hidden" name="oldName" value=<%=name%>>
       	<input type="hidden" name="oldEmail" value=<%=email%>>
-      	<input type="hidden" name="username" value=<%=usn%>>
       	<input type="submit" value="Save Changes">
 	</form>
 	
