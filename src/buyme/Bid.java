@@ -6,12 +6,18 @@ public class Bid {
 	
 	public static void createBid(int auction_id, int user_id, double price) throws SQLException, Exception{
 		try{
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			Connection con = DriverManager.getConnection("jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme", "cs336", "thisisareallysecurepassword551");
-	    	Statement st = con.createStatement();  
-	    	String createStatement= String.format("INSERT INTO Bid (auction_id, user_id, price) VALUES (%d, %d, %f);",auction_id, user_id, price);  
-	    	st.executeUpdate(createStatement);
-	    	
+	    	String insertSQL = "INSERT INTO Bid (auction_id, user_id, price) VALUES (?, ?, ?)";
+	    	PreparedStatement ps = con.prepareStatement(insertSQL);
+	    	ps.setInt(1, auction_id);
+	    	ps.setInt(2, user_id);
+	    	ps.setDouble(3, price);
+//	    	Statement st = con.createStatement();
+//	    	String createStatement= String.format("INSERT INTO Bid (auction_id, user_id, price) VALUES (%d, %d, %f);",auction_id, user_id, price);
+//	    	System.out.println(createStatement);
+//	    	st.executeUpdate(createStatement);
+	    	ps.executeUpdate();
 		}
 		catch(SQLException se){
 			throw se;
@@ -91,6 +97,16 @@ public class Bid {
 		}
 		catch(Exception e){
 			throw e;
+		}
+	}
+	
+	public static void main(String[] args) {
+		try {
+			Bid.createBid(5, 9, 700);
+		} catch (SQLException se) {
+			se.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }
