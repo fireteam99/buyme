@@ -1,7 +1,8 @@
 <nav class="navbar">
 	<a class="nav-btn" href="index.jsp">Buy Me</a>
 	<a class="nav-btn" href="market.jsp">Shop</a>
-	<% if(session.getAttribute("user")!=null) { 
+	<a class="nav-btn" href="questions.jsp">Forums</a>
+ 	<% if(session.getAttribute("user")!=null) { 
 		String username = (String)session.getAttribute("user"); %>
 		
 		<a class="nav-btn" href="logout.jsp">Logout</a>

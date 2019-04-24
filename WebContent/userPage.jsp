@@ -42,7 +42,6 @@
 					<p class="body-sml">User since: <%=strDate %></p>
 				</div>
 			 	<!-- I LOVE YOU RAY -->
-				<a class="link" href='logout.jsp'>Logout</a>
 				<%
 					}
 				%>

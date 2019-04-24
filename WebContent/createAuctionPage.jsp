@@ -35,17 +35,17 @@
 			
 			<div class="card">
 				<form action='createAuctionHandler.jsp' method='POST'>
-					Item Name <input type='text' name='item_name' required><br>
-					Image Url <input type='text' name='pic_link'><br/>
-					Initial Price <input type='number' name='initial_price' required><br>
-					Minimum Sell Price <input type='number' name='min_sell_price' required><br>
-					Increment <input type='number' name='increment' required><br/>
-					Item Description <textarea name='item_description' required></textarea><br>
-					Category Name <input type='text' name='category_name' required><br>
-					Subcategory Name <input type='text' name='subcategory_name' required><br>
-					End Date <input type='date' name='end_date' required><br>
+					Item Name <input class="input-form" type='text' name='item_name' required><br>
+					Image Url <input class="input-form" type='text' name='pic_link'><br/>
+					Initial Price <input class="input-form" type='number' name='initial_price' required><br>
+					Minimum Sell Price <input class="input-form" type='number' name='min_sell_price' required><br>
+					Increment <input class="input-form" type='number' name='increment' required><br/>
+					Item Description <textarea class="input-form" name='item_description' required></textarea><br>
+					Category Name <input class="input-form" type='text' name='category_name' required><br>
+					Subcategory Name <input class="input-form" type='text' name='subcategory_name' required><br>
+					End Date <input class="input-form" type='date' name='end_date' required><br>
 					
-					<input type='submit' value='Post Auction'>
+					<input class="btn-secondary" type='submit' value='Post Auction'>
 				</form>
 			</div>
 			

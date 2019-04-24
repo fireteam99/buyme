@@ -21,7 +21,7 @@
     	//check if the user posting is either a customer rep or the poster of the thread
 		String user_id = "";//this is the attempting poster
 		//get the username from the user_id to show who posted the thread
-		String get_userid = "SELECT u.user_id FROM User u WHERE u.username = " + user + " ";
+		String get_userid = "SELECT u.user_id FROM User u WHERE u.username = '" + user + "' ";
 		Statement st = con.createStatement();
 		ResultSet result_userid = st.executeQuery(get_userid);
 		if(result_userid.next()){
@@ -29,10 +29,10 @@
 		}
 	
 		String tuserid = "";//the poster of the thread
-		String get_posterid = "SELECT t.user_id FROM Thread t WHERE t.threadid = " + threadid + " ";
+		String get_posterid = "SELECT * FROM Thread t WHERE t.threadid = '" + threadid + "' ";
 		result_userid = st.executeQuery(get_posterid);
 		if(result_userid.next()){
-			tuserid = result_userid.getString("t.user_id");	
+			tuserid = result_userid.getString("user_id");	
 		}
 		
 		boolean isCustomerRep = false;
@@ -65,7 +65,7 @@
     			String title = request.getParameter("title");
 
 			java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
-			String topost = String.format("INSERT INTO `Post` (threadid, post_id, user_id, body, timecreated) VALUES ('%s', null, '%s', '%s', '%s', '%s');", user_id, date.toString(), title, body);
+			String topost = String.format("INSERT INTO `Post` (threadid, post_id, user_id, body, timecreated) VALUES ('%s', null, '%s', '%s', '%s');", threadid, user_id, body, date.toString());
 			out.println(topost);
 			st.executeUpdate(topost);
 
