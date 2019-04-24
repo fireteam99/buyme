@@ -8,7 +8,7 @@
    <body>
    	<h3>Search for questions</h3>
 		<form>
-      	<input type="text" name="search" placeholder="Search through question titles">
+      	<input type="text" name="search" placeholder="Search through titles">
       	<button type="submit">Search</button>
     	</form>
    
@@ -43,9 +43,9 @@
         	}
      		//I hope this works....
      		%>
-     		<ul class= "threads">
-			<li><a href="createThread.jsp"><span class="keyword">Create a new thread</span></a></li>
      		
+			<a href="createThread.jsp"><span class="keyword">Create a new thread</span></a>
+     		<ul class= "threads">
      		<%
 			//Note: If I wanted to just show the title and then expand when clicked on, I would have to use javascript
 			
