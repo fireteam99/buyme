@@ -20,7 +20,7 @@
 </head>
 <body>
 	<%@ include file="./partials/navbar.jsp"%>
-
+	<div class="content">
 
 	<%
 		if ((session.getAttribute("user") == null)) {
@@ -33,31 +33,32 @@
 	<%
 		} else { %>
 			
-			<form action='createAuctionHandler.jsp' method='POST'>
-			Item Name <input type='text' name='item_name' required><br>
-			Image Url <input type='text' name='pic_link'><br/>
-			Initial Price <input type='number' name='initial_price' required><br>
-			Minimum Sell Price <input type='number' name='min_sell_price' required><br>
-			Increment <input type='number' name='increment' required><br/>
-			Item Description <textarea name='item_description' required></textarea><br>
-			Category Name <input type='text' name='category_name' required><br>
-			Subcategory Name <input type='text' name='subcategory_name' required><br>
-			End Date <input type='date' name='end_date' required><br>
+			<div class="card">
+				<form action='createAuctionHandler.jsp' method='POST'>
+					Item Name <input type='text' name='item_name' required><br>
+					Image Url <input type='text' name='pic_link'><br/>
+					Initial Price <input type='number' name='initial_price' required><br>
+					Minimum Sell Price <input type='number' name='min_sell_price' required><br>
+					Increment <input type='number' name='increment' required><br/>
+					Item Description <textarea name='item_description' required></textarea><br>
+					Category Name <input type='text' name='category_name' required><br>
+					Subcategory Name <input type='text' name='subcategory_name' required><br>
+					End Date <input type='date' name='end_date' required><br>
+					
+					<input type='submit' value='Post Auction'>
+				</form>
+			</div>
 			
-			<input type='submit' value='Post Auction'>
-		</form>
 	
 
  
  	<!-- I LOVE YOU RAY -->
 
 
-
-	<a href='logout.jsp'>Log out</a>
 	<%
 		}
 	%>
-
+	</div>
 
 
 	<%@ include file="./partials/footer.jsp"%>

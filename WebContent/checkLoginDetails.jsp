@@ -20,7 +20,7 @@
 			if (rs.next()) {
 				response.sendRedirect("adminDashboard.jsp");
 			} else {
-				response.sendRedirect("success.jsp");
+				response.sendRedirect("userPage.jsp");
 			}
 		}
 	} else {

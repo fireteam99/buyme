@@ -31,7 +31,7 @@
 						String pic_link = rs.getString("pic_link");
 						java.sql.Date created_at = rs.getDate("created_at");
 						
-						DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");  
+						DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");  
 			            String strDate = dateFormat.format(created_at);  
 				%>
 				<div class="pro-pic-container">
@@ -55,11 +55,11 @@
 				</div>
 				<div class="card notification">
 					<p class="body-sml">1/2/14 5:20pm</p>
-					<p class="body-lrg notification-body">"user" won an auction.</p>
+					<p class="body-lrg notification-body">jon won an auction.</p>
 				</div>
 				<div class="card notification">
 					<p class="body-sml">1/2/14 5:20pm</p>
-					<p class="body-lrg notification-body">"user" bidded on an auction.</p>
+					<p class="body-lrg notification-body">jon bidded on an auction.</p>
 				</div>
 			</div>
 			

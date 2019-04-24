@@ -16,7 +16,7 @@
 		<header>
 			<div class="heading">
 				<p class="hdr-lrg title">Welcome To Buy Me</p>
-				<p class="hdr-med subtitle">Please buy our shit.</p>
+				<p class="hdr-med subtitle">Please buy our stuff.</p>
 			</div>
 			<div class="reg-login">
 			
