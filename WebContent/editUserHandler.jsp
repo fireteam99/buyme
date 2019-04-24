@@ -31,13 +31,16 @@
 				System.out.println(update);
 				if (res >= 1) {
 					out.println("Changes have been saved.");
+					out.println("<a href='custRepDashboard.jsp'>Return to dashboard.</a>");
 				} else {
 					out.println("Changes failed.");
+					out.println("<a href='custRepDashboard.jsp'>Return to dashboard.</a>");
 				}
 			}
 		} catch (SQLException se) {
 			out.println("Error: Cannot Update <br>");
 			out.println("<a href='userManager.jsp'>Return to list of users</a>");
+			out.println("<a href='custRepDashboard.jsp'>Return to dashboard.</a>");
 			se.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
