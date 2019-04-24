@@ -149,11 +149,10 @@
 					
 				}//for the posts' while
 					*/
-				%>
-				</ul>
-				<%
 			}//for the threads's while 
-			
+			%>
+			</ul>
+			<%
 				/*
 			out.print("</ul>");
 			out.print("</div>");

@@ -43,10 +43,10 @@
 		
 		if(solved== null){
 			//topost = String.format("UPDATE `Thread` (threadid, user_id, timecreated, title, description, solved) VALUES (null, '%s', '%s', '%s', '%s', 0);", user_id, date.toString(), title, body);//insert 0 (its BIT type, only 0,1,or null)
-			topost = "UPDATE 'Thread' SET title='" + title +  "', description='" + body + "', solved=0 WHERE threadid= '" + threadid + "'";
+			topost = "UPDATE Thread SET title='" + title +  "', description='" + body + "', solved=0 WHERE threadid=" + threadid;
 		}else{
 			//topost = String.format("UPDATE `Thread` (threadid, user_id, timecreated, title, description, solved) VALUES (null, '%s', '%s', '%s', '%s', 1);", user_id, date.toString(), title, body);//insert 0 (its BIT type, only 0,1,or null)
-			topost = "UPDATE 'Thread' SET title='" + title +  "', description='" + body + "', solved=1 WHERE threadid= '" + threadid + "'";
+			topost = "UPDATE Thread SET title='" + title +  "', description='" + body + "', solved=1 WHERE threadid=" + threadid;
 		}
 		
 		out.println(topost);
