@@ -22,5 +22,7 @@
        </select>
        <input type="submit" value="Generate Sales Report"/>
      </form>
+	
+	<a href="logout.jsp">Logout</a>
 </body>
 </html>
