@@ -11,6 +11,7 @@
 	Bid b=new Bid();
 	b.remove(Integer.parseInt(request.getParameter("bid")));
 	out.println("Bid removed.");
+	out.println("<a href='custRepDashboard.jsp'>Return to dashboard.</a>");
 %>
 </body>
 </html>

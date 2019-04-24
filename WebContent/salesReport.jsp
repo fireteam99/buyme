@@ -7,6 +7,7 @@
 <title>Sales Report</title>
 </head>
 <body>
+  <a href="adminDashboard.jsp">Return to dashboard</a>
 <h2>Sales Report</h2>
 <% 
 SalesReport s=new SalesReport();	

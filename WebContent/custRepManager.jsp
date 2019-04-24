@@ -6,6 +6,7 @@
 <title>Delete Customer Rep</title>
 </head>
 <body>
+	<a href="adminDashboard.jsp">Return to dashboard.</a>
 	<h3>Manage Customer Representative Accounts</h3>
 	<form>
       	<input type="text" name="search" placeholder="Username">

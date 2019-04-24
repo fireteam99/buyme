@@ -11,6 +11,7 @@ Bid b=new Bid();
 b.edit(Integer.parseInt(request.getParameter("aid")), Integer.parseInt(request.getParameter("uid")), 
 		Integer.parseInt(request.getParameter("bid")), Double.parseDouble(request.getParameter("price")));
 out.println("Changes saved.");
+out.println("<a href='custRepDashboard.jsp'>Return to dashboard.</a>");
 %>
 
 </body>

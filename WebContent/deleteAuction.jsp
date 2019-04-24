@@ -11,6 +11,7 @@
 	Item i=new Item();
 	i.deleteByID(Integer.parseInt(request.getParameter("aid")));
 	out.println("Auction deleted.");	
+	out.println("<a href='custRepDashboard.jsp'>Return to dashboard.</a>");
 %>
 
 </body>

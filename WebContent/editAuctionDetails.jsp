@@ -9,5 +9,6 @@ Auction.edit(Integer.parseInt(request.getParameter("auction_id")), request.getPa
 		request.getParameter("subcategory_name"), 
 		java.sql.Timestamp.valueOf(request.getParameter("endDate")));
 out.println("Changes saved.");
+out.println("<a href='custRepDashboard.jsp'>Return to dashboard.</a>");
 %>
 
