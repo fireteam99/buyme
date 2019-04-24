@@ -12,7 +12,7 @@
     	String insertStatement = String.format("INSERT INTO User (created_at, full_name, password, username, email, user_id) VALUES ('%s', '%s', '%s', '%s', '%s', null);", date.toString(), name, password, username, email);
     	st.executeUpdate(insertStatement);
     	session.setAttribute("user", username);
-    	response.sendRedirect("success.jsp");
+    	response.sendRedirect("userPage.jsp");
   } catch(SQLException se) {
   	out.println("Error: <a href='register.jsp'>Try again</a>");
       	se.printStackTrace();

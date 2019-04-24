@@ -36,7 +36,6 @@
 						
 					</div>
 					<div class="item-status-container">
-						<p class="body-lrg">Status: Open - 6 Days Left</p>
 						<p class="body-sml">Open Date: <%=rs.getString("start_date") %></p>
 						<p class="body-sml">Close Date: <%=rs.getString("end_date") %></p>
 					</div>
@@ -55,38 +54,55 @@
 			<div class="bidding-container">
 				<div class="card make-bid-container">
 					<p class="hdr-med">Make a Bid</p>
-					<p id="auto-bid-incr" class="auto-bid-incr body-lrg disabled">Auto Bid Increment: $<%=rs.getFloat("increment") %></p>
-					<form class="make-bid-form" action="createBidHandler.jsp" method="POST" >
-						<div class="flex-container">
-							<div>
-								<input name="bid_amount" class="input-form" type="number" step="0.01" min="0" oninput="validity.valid||(value='');" required/>
-								<label class="input-label bid-label" for="bid_amount">Bid Amount</label>
-							</div>
-							<div>
-								<input name="auto-bid-limit" id="auto-bid-limit" class="input-form disabled" type="number" step="0.01" min="0" oninput="validity.valid||(value='');"  disabled required/>
-								<label class="input-label bid-label disabled" id="auto-bid-limit-label" for="auto-bid-limit">Auto Bid Limit</label>
-							</div>
-								<input name="auction_id" type="hidden" value=<%="\""+request.getParameter("auctionID")+"\"" %>/>
-								<input name="user_id" type="hidden" value=<%="\""+User.getUserIDfromUsername((String)session.getAttribute("user"))+"\"" %>/>
+					
+					<% 
+						if(session.getAttribute("user") != null) {
+						%>
+							
+							<p id="auto-bid-incr" class="auto-bid-incr body-lrg disabled">Auto Bid Increment: $<%=rs.getFloat("increment") %></p>
+							<form class="make-bid-form" action="createBidHandler.jsp" method="POST" >
+								<div class="flex-container">
+									<div>
+										<input name="bid_amount" class="input-form" type="number" step="0.01" min="0" oninput="validity.valid||(value='');" required/>
+										<label class="input-label bid-label" for="bid_amount">Bid Amount</label>
+									</div>
+									<div>
+										<input name="auto-bid-limit" id="auto-bid-limit" class="input-form disabled" type="number" step="0.01" min="0" oninput="validity.valid||(value='');"  disabled required/>
+										<label class="input-label bid-label disabled" id="auto-bid-limit-label" for="auto-bid-limit">Auto Bid Limit</label>
+									</div>
+										<input name="auction_id" type="hidden" value=<%="\""+request.getParameter("auctionID")+"\"" %>/>
+										<input name="user_id" type="hidden" value=<%="\""+User.getUserIDfromUsername((String)session.getAttribute("user"))+"\"" %>/>
+										
+									<!-- <div>
+										<input name="auto-bid-amount" id="auto-bid-amount" class="input-form disabled" type="number" step="0.01" min="0" oninput="validity.valid||(value='');"  disabled required/>
+										<label class="input-label bid-label disabled" id="auto-bid-amount-label" for="auto-bid-amount">Auto Bid Increment</label>
+									</div> -->
+								</div>
 								
-							<!-- <div>
-								<input name="auto-bid-amount" id="auto-bid-amount" class="input-form disabled" type="number" step="0.01" min="0" oninput="validity.valid||(value='');"  disabled required/>
-								<label class="input-label bid-label disabled" id="auto-bid-amount-label" for="auto-bid-amount">Auto Bid Increment</label>
-							</div> -->
-						</div>
-						
-						<div class="pretty p-switch p-slim checkbox">
-						        <input type="checkbox" name="auto-bid-selector" id="auto-bid-selector"/>
-						        <div class="state p-info">
-						            <label>Enable Auto Bidding</label>
-						        </div>
-					    </div>
-						<div class="btn-container">
-							<button class="btn-secondary-danger" type="reset">Clear</button>
-							<button class="btn-secondary" type="submit">Bid</button>
-						
-						</div>
-					</form>
+								<div class="pretty p-switch p-slim checkbox">
+								        <input type="checkbox" name="auto-bid-selector" id="auto-bid-selector"/>
+								        <div class="state p-info">
+								            <label>Enable Auto Bidding</label>
+								        </div>
+							    </div>
+								<div class="btn-container">
+									<button class="btn-secondary-danger" type="reset">Clear</button>
+									<button class="btn-secondary" type="submit">Bid</button>
+								
+								</div>
+							</form>
+							
+							
+						<%	
+						} else {
+							%>
+							<a class="link" href="login.jsp">Login to Bid!</a>
+							<%
+							
+						}
+					%>
+					
+					
 					
 				</div>
 			</div>

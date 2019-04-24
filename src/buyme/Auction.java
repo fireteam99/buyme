@@ -1,11 +1,8 @@
 package buyme;
 
 import buyme.Item;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import java.sql.*;
 
 public class Auction {
 	
@@ -19,10 +16,9 @@ public class Auction {
 		    System.out.println(insertStatement);
 		    st.executeUpdate(insertStatement);
 
-		    ResultSet rs = st.executeQuery("SELECT LAST_INSERT_ID() AS auction_id FROM Auction;");
+		    ResultSet rs = st.executeQuery("SELECT LAST_INSERT_ID() AS  FROM Auction;");
 		    rs.next();
 		    return rs.getInt("auction_id");
-		    
 		}
 		catch(SQLException se) {
 			throw se;
@@ -74,7 +70,10 @@ public class Auction {
 			Connection con = DriverManager.getConnection("jdbc:mysql://cs336.c7mvfesixgy7.us-east-2.rds.amazonaws.com:3306/buyme", "cs336", "thisisareallysecurepassword551");
 	    	Statement st = con.createStatement();    	
 	    	java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
-	    	String auctionSelect="SELECT * FROM Auction WHERE auction_id="+auction_id+";";
+	    	String selectSQL = "SELECT * FROM Auction WHERE auction_id = ?";
+	    	PreparedStatement ps = con.prepareStatement(selectSQL);
+	    	ps.setInt(1, auction_id);
+	    	String auctionSelect="SELECT * FROM Auction WHERE auction_id="+auction_id;
 	    	ResultSet rs=st.executeQuery(auctionSelect);
 	    	return rs;
 		}
